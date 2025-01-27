@@ -5,11 +5,13 @@ import { Navbar } from "./components/Navbar";
 export function App() {
   return (
     <BrowserRouter>
-      <div className="w-1/2 mx-auto">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+      <div className="flex justify-center">
+        <div className="max-w-screen-xl">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );
