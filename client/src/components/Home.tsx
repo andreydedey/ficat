@@ -174,20 +174,59 @@ export function Home() {
           <input
             type="text"
             id="name"
-            className="col-span-2 border border-gray-300 text-gray-900
+            className="col-span-3 border border-gray-300 text-gray-900
               text-sm rounded-lg outline-gray-300
               focus:outline-2 focus:outline-blue-500 w-full p-2.5"
             placeholder="Ex.: João Henrique Rabelo"
             required
           />
+        </div>
 
-          <div className="flex items-center">
+        <div className="grid grid-cols-4 items-center col-span-2 gap-2">
+          <label
+            htmlFor="name"
+            className="mb-2 text-sm font-medium text-gray-900"
+          >
+            Sobrenome do Orientador:
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
+            placeholder="Ex.: João Henrique Rabelo"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-4 items-center col-span-2 gap-6">
+          <div className="flex items-center col-span-3">
+            <label
+              htmlFor="countries"
+              className="block mb-2 text-sm font-medium text-gray-900"
+            >
+              Titulação do Orientador
+            </label>
+            <select
+              id="countries"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            >
+              <option selected>- Selecione -</option>
+              <option value="graduado">Graduado</option>
+              <option value="especialista">Especialista</option>
+              <option value="mestre">Mestre</option>
+              <option value="doutor">Doutor</option>
+            </select>
+          </div>
+          <div>
             <input
               id="default-checkbox"
               type="checkbox"
               value=""
               className="w-4 h-4 text-blue-600 bg-gray-100
-            border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+              border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
             />
             <label
               htmlFor="default-checkbox"
@@ -196,6 +235,24 @@ export function Home() {
               Orientadora
             </label>
           </div>
+        </div>
+
+        <div className="grid grid-cols-4 items-center col-span-2 gap-4">
+          <label
+            htmlFor="name"
+            className="mb-2 text-sm font-medium text-gray-900"
+          >
+            Nome do Coorientador:
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
+            placeholder="Ex.: João Henrique Rabelo"
+            required
+          />
         </div>
 
         <div className="grid grid-cols-4 items-center col-span-2 gap-2">
@@ -216,73 +273,42 @@ export function Home() {
           />
         </div>
 
-        <label
-          htmlFor="countries"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Titulação do Coorientador
-        </label>
-        <select
-          id="countries"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        >
-          <option selected>- Selecione -</option>
-          <option value="graduado">Graduado</option>
-          <option value="especialista">Especialista</option>
-          <option value="mestre">Mestre</option>
-          <option value="doutor">Doutor</option>
-        </select>
-
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Nome do Coorientador
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 
-            text-sm rounded-lg outline-gray-300
-            focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-          placeholder="Ex.: Bruno Santos Sousa"
-          required
-        />
-
-        <div className="flex items-center mt-3">
-          <input
-            id="default-checkbox"
-            type="checkbox"
-            value=""
-            className="w-4 h-4 text-blue-600 bg-gray-100
-            border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-          />
-          <label
-            htmlFor="default-checkbox"
-            className="ms-2 text-sm font-medium text-gray-900"
-          >
-            Coorientadora
-          </label>
+        <div className="grid grid-cols-4 items-center col-span-2 gap-6">
+          <div className="flex items-center col-span-3">
+            <label
+              htmlFor="countries"
+              className="block mb-2 text-sm font-medium text-gray-900"
+            >
+              Titulação do Coorientador
+            </label>
+            <select
+              id="countries"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            >
+              <option selected>- Selecione -</option>
+              <option value="graduado">Graduado</option>
+              <option value="especialista">Especialista</option>
+              <option value="mestre">Mestre</option>
+              <option value="doutor">Doutor</option>
+            </select>
+          </div>
+          <div>
+            <input
+              id="default-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 text-blue-600 bg-gray-100
+              border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+            />
+            <label
+              htmlFor="default-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Coorientadora
+            </label>
+          </div>
         </div>
-
-        <label
-          htmlFor="countries"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Titulação do Coorientador
-        </label>
-        <select
-          id="countries"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        >
-          <option selected>- Selecione -</option>
-          <option value="graduado">Graduado</option>
-          <option value="especialista">Especialista</option>
-          <option value="mestre">Mestre</option>
-          <option value="doutor">Doutor</option>
-        </select>
 
         <label
           htmlFor="year"
