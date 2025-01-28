@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export function Navbar() {
   return (
     <div className="border-b border-gray-200">
-      <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500">
+      <ul className="flex flex-wrap justify-between -mb-px text-sm font-medium text-center text-gray-500">
         <li className="me-2">
           <a
             href="#"

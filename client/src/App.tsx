@@ -5,8 +5,8 @@ import { Navbar } from "./components/Navbar";
 export function App() {
   return (
     <BrowserRouter>
-      <div className="flex justify-center bg-violet-800">
-        <div className="max-w-screen-xl bg-slate-100">
+      <div className="flex justify-center">
+        <div>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

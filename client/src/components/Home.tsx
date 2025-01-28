@@ -1,119 +1,219 @@
 export function Home() {
   return (
-    <div className="p-4 rounded-md">
-      <form action="#" className="max-w-sm mx-auto">
-        <h2>Dados do Autor</h2>
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Nome
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 
-            text-sm rounded-lg outline-gray-300
-            focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-          placeholder="Ex.: João Henrique Rabelo"
-          required
-        />
-
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Sobrenome
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 
-            text-sm rounded-lg outline-gray-300
-            focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-          placeholder="Ex.: Barbosa"
-          required
-        />
-
-        <h2>Dados do Trabalho</h2>
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Título do Trabalho
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 
-            text-sm rounded-lg outline-gray-300
-            focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-          placeholder="Ex.: Redes sociais em bibliotecas universitárias"
-          required
-        />
-
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Subtítulo do Trabalho
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 
-            text-sm rounded-lg outline-gray-300
-            focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-          placeholder="Ex.: estudo exploratório"
-          required
-        />
-
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Nome do Orientador
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 
-            text-sm rounded-lg outline-gray-300
-            focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-          placeholder="Ex.: Paulo Victor Lobato"
-          required
-        />
-
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          Sobrenome do Orientador
-        </label>
-        <input
-          type="text"
-          id="name"
-          className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 
-            text-sm rounded-lg outline-gray-300
-            focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-          placeholder="Ex.: Sarmento"
-          required
-        />
-
-        <div className="flex items-center mt-3">
-          <input
-            id="default-checkbox"
-            type="checkbox"
-            value=""
-            className="w-4 h-4 text-blue-600 bg-gray-100
-            border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-          />
+    <div className="rounded-md border-2 p-4">
+      <form
+        action="#"
+        className="grid grid-cols-2 justify-start gap-6 max-w-3xl"
+      >
+        <div className="grid grid-cols-4 items-center col-span-2">
           <label
-            htmlFor="default-checkbox"
-            className="ms-2 text-sm font-medium text-gray-900"
+            htmlFor="name"
+            className="mb-2 text-sm font-medium text-gray-900"
           >
-            Orientadora
+            Nome
           </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
+            placeholder="Ex.: João Henrique Rabelo"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-4 col-span-2 items-center">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Sobrenome
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+            placeholder="Ex.: Barbosa"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-4 items-center">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Título do Trabalho
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+            placeholder="Ex.: Redes sociais em bibliotecas universitárias"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-4 items-center gap-6">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Subtítulo do Trabalho
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+            placeholder="Ex.: estudo exploratório"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-2 items-center">
+          <h2>Trabalho</h2>
+          <div className="flex flex-col gap-2">
+            <div className="flex gap-4">
+              <input
+                id="inline-radio"
+                type="radio"
+                value=""
+                name="inline-radio-group"
+                className="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+              />
+              <label
+                htmlFor="inline-radio"
+                className="text-sm font-medium text-gray-900"
+              >
+                Tese
+              </label>
+            </div>
+
+            <div className="flex gap-4">
+              <input
+                id="inline-radio"
+                type="radio"
+                value=""
+                name="inline-radio-group"
+                className="h-4 w-4  text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+              />
+              <label
+                htmlFor="inline-radio"
+                className="text-sm font-medium text-gray-900"
+              >
+                Dissertação
+              </label>
+            </div>
+
+            <div className="flex gap-4">
+              <input
+                id="inline-radio"
+                type="radio"
+                value=""
+                name="inline-radio-group"
+                className="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+              />
+              <label
+                htmlFor="inline-radio"
+                className="text-sm font-medium text-gray-900"
+              >
+                TC (Especialização)
+              </label>
+            </div>
+
+            <div className="flex gap-4">
+              <input
+                id="inline-radio"
+                type="radio"
+                value=""
+                name="inline-radio-group"
+                className="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+              />
+              <label
+                htmlFor="inline-radio"
+                className="text-sm font-medium text-gray-900"
+              >
+                TC (Graduação)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-4 items-center col-span-1">
+          <label
+            htmlFor="name"
+            className="mb-2 text-sm font-medium text-gray-900"
+          >
+            Programa
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
+            placeholder="Ex.: João Henrique Rabelo"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-4 items-center col-span-2 gap-4">
+          <label
+            htmlFor="name"
+            className="mb-2 text-sm font-medium text-gray-900"
+          >
+            Nome do Orientador:
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-2 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
+            placeholder="Ex.: João Henrique Rabelo"
+            required
+          />
+
+          <div className="flex items-center">
+            <input
+              id="default-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 text-blue-600 bg-gray-100
+            border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+            />
+            <label
+              htmlFor="default-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Orientadora
+            </label>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-4 items-center col-span-2 gap-2">
+          <label
+            htmlFor="name"
+            className="mb-2 text-sm font-medium text-gray-900"
+          >
+            Sobrenome do Coorientador:
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="col-span-3 border border-gray-300 text-gray-900
+              text-sm rounded-lg outline-gray-300
+              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
+            placeholder="Ex.: João Henrique Rabelo"
+            required
+          />
         </div>
 
         <label
@@ -253,66 +353,6 @@ export function Home() {
           <option value="Coloridas">Coloridas</option>
           <option value="Preto e branco">Preto e branco</option>
         </select>
-
-        <div className="flex">
-          <div className="flex items-center me-4">
-            <input
-              id="inline-radio"
-              type="radio"
-              value=""
-              name="inline-radio-group"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-            />
-            <label
-              htmlFor="inline-radio"
-              className="ms-2 text-sm font-medium text-gray-900"
-            >
-              Tese
-            </label>
-
-            <input
-              id="inline-radio"
-              type="radio"
-              value=""
-              name="inline-radio-group"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-            />
-            <label
-              htmlFor="inline-radio"
-              className="ms-2 text-sm font-medium text-gray-900"
-            >
-              Dissertação
-            </label>
-
-            <input
-              id="inline-radio"
-              type="radio"
-              value=""
-              name="inline-radio-group"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-            />
-            <label
-              htmlFor="inline-radio"
-              className="ms-2 text-sm font-medium text-gray-900"
-            >
-              TC (Especialização)
-            </label>
-
-            <input
-              id="inline-radio"
-              type="radio"
-              value=""
-              name="inline-radio-group"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
-            />
-            <label
-              htmlFor="inline-radio"
-              className="ms-2 text-sm font-medium text-gray-900"
-            >
-              TC (Graduação)
-            </label>
-          </div>
-        </div>
       </form>
     </div>
   );
