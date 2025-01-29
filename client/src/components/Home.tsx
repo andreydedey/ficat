@@ -3,14 +3,14 @@ export function Home() {
     <div className="rounded-md border-2 p-4">
       <form
         action="#"
-        className="grid grid-cols-2 justify-start gap-6 max-w-3xl"
+        className="grid grid-cols-2 justify-start gap-6 max-w-xl"
       >
-        <div className="grid grid-cols-4 items-center col-span-2">
+        <div className="grid grid-cols-4 items-center justify-items-end gap-4 col-span-2">
           <label
             htmlFor="name"
             className="mb-2 text-sm font-medium text-gray-900"
           >
-            Nome
+            Nome:
           </label>
           <input
             type="text"
@@ -23,12 +23,12 @@ export function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-4 col-span-2 items-center">
+        <div className="grid grid-cols-4 justify-items-end gap-4 col-span-2 items-center">
           <label
             htmlFor="name"
             className="block mb-2 text-sm font-medium text-gray-900"
           >
-            Sobrenome
+            Sobrenome:
           </label>
           <input
             type="text"
@@ -41,44 +41,42 @@ export function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-4 items-center">
+        <div className="grid grid-cols-4 justify-items-end gap-4 items-center col-span-2">
           <label
             htmlFor="name"
             className="block mb-2 text-sm font-medium text-gray-900"
           >
-            Título do Trabalho
+            Título do Trabalho:
           </label>
           <input
             type="text"
             id="name"
             className="col-span-3 border border-gray-300 text-gray-900
-              text-sm rounded-lg outline-gray-300
-              focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+                text-sm rounded-lg outline-gray-300
+                focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
             placeholder="Ex.: Redes sociais em bibliotecas universitárias"
             required
           />
         </div>
-
-        <div className="grid grid-cols-4 items-center gap-6">
+        <div className="grid grid-cols-4 justify-items-end gap-4 items-center col-span-2">
           <label
             htmlFor="name"
-            className="block mb-2 text-sm font-medium text-gray-900"
+            className="block mb-2 text-sm text-right font-medium text-gray-900"
           >
-            Subtítulo do Trabalho
+            Subtítulo do Trabalho:
           </label>
           <input
             type="text"
             id="name"
             className="col-span-3 border border-gray-300 text-gray-900
-              text-sm rounded-lg outline-gray-300
-              focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+                text-sm rounded-lg outline-gray-300
+                focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
             placeholder="Ex.: estudo exploratório"
             required
           />
         </div>
-
         <div className="grid grid-cols-2 items-center">
-          <h2>Trabalho</h2>
+          <h2>Trabalho BOM DEXAR INLINE</h2>
           <div className="flex flex-col gap-2">
             <div className="flex gap-4">
               <input
@@ -95,7 +93,6 @@ export function Home() {
                 Tese
               </label>
             </div>
-
             <div className="flex gap-4">
               <input
                 id="inline-radio"
@@ -111,7 +108,6 @@ export function Home() {
                 Dissertação
               </label>
             </div>
-
             <div className="flex gap-4">
               <input
                 id="inline-radio"
@@ -127,7 +123,6 @@ export function Home() {
                 TC (Especialização)
               </label>
             </div>
-
             <div className="flex gap-4">
               <input
                 id="inline-radio"
@@ -146,12 +141,12 @@ export function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 items-center col-span-1">
+        <div className="grid grid-cols-4 items-center justify-items-end gap-4 col-span-2">
           <label
             htmlFor="name"
             className="mb-2 text-sm font-medium text-gray-900"
           >
-            Programa
+            Programa:
           </label>
           <input
             type="text"
@@ -164,10 +159,10 @@ export function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-4 items-center col-span-2 gap-4">
+        <div className="grid grid-cols-4 items-center justify-items-end gap-4 col-span-2">
           <label
             htmlFor="name"
-            className="mb-2 text-sm font-medium text-gray-900"
+            className="mb-2 text-sm text-right font-medium text-gray-900"
           >
             Nome do Orientador:
           </label>
@@ -182,10 +177,10 @@ export function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-4 items-center col-span-2 gap-2">
+        <div className="grid grid-cols-4 justify-items-end gap-4 col-span-2 items-center">
           <label
             htmlFor="name"
-            className="mb-2 text-sm font-medium text-gray-900"
+            className="block mb-2 text-sm text-right font-medium text-gray-900"
           >
             Sobrenome do Orientador:
           </label>
@@ -194,53 +189,16 @@ export function Home() {
             id="name"
             className="col-span-3 border border-gray-300 text-gray-900
               text-sm rounded-lg outline-gray-300
-              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
-            placeholder="Ex.: João Henrique Rabelo"
+              focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+            placeholder="Ex.: Barbosa"
             required
           />
         </div>
 
-        <div className="grid grid-cols-4 items-center col-span-2 gap-6">
-          <div className="flex items-center col-span-3">
-            <label
-              htmlFor="countries"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Titulação do Orientador
-            </label>
-            <select
-              id="countries"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            >
-              <option selected>- Selecione -</option>
-              <option value="graduado">Graduado</option>
-              <option value="especialista">Especialista</option>
-              <option value="mestre">Mestre</option>
-              <option value="doutor">Doutor</option>
-            </select>
-          </div>
-          <div>
-            <input
-              id="default-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100
-              border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-            />
-            <label
-              htmlFor="default-checkbox"
-              className="ms-2 text-sm font-medium text-gray-900"
-            >
-              Orientadora
-            </label>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-4 items-center col-span-2 gap-4">
+        <div className="grid grid-cols-4 items-center justify-items-end gap-4 col-span-2">
           <label
             htmlFor="name"
-            className="mb-2 text-sm font-medium text-gray-900"
+            className="mb-2 text-sm text-right font-medium text-gray-900"
           >
             Nome do Coorientador:
           </label>
@@ -255,10 +213,10 @@ export function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-4 items-center col-span-2 gap-2">
+        <div className="grid grid-cols-4 justify-items-end gap-4 col-span-2 items-center">
           <label
             htmlFor="name"
-            className="mb-2 text-sm font-medium text-gray-900"
+            className="block mb-2 text-sm text-right font-medium text-gray-900"
           >
             Sobrenome do Coorientador:
           </label>
@@ -267,47 +225,50 @@ export function Home() {
             id="name"
             className="col-span-3 border border-gray-300 text-gray-900
               text-sm rounded-lg outline-gray-300
-              focus:outline-2 focus:outline-blue-500 w-full p-2.5"
-            placeholder="Ex.: João Henrique Rabelo"
+              focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+            placeholder="Ex.: Barbosa"
             required
           />
         </div>
 
-        <div className="grid grid-cols-4 items-center col-span-2 gap-6">
-          <div className="flex items-center col-span-3">
-            <label
-              htmlFor="countries"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Titulação do Coorientador
-            </label>
-            <select
-              id="countries"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            >
-              <option selected>- Selecione -</option>
-              <option value="graduado">Graduado</option>
-              <option value="especialista">Especialista</option>
-              <option value="mestre">Mestre</option>
-              <option value="doutor">Doutor</option>
-            </select>
-          </div>
-          <div>
-            <input
-              id="default-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100
-              border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-            />
-            <label
-              htmlFor="default-checkbox"
-              className="ms-2 text-sm font-medium text-gray-900"
-            >
-              Coorientadora
-            </label>
-          </div>
+        <div className="grid grid-cols-4 items-center justify-items-end col-span-2 gap-4">
+          <label
+            htmlFor="countries"
+            className="block mb-2 text-sm text-right font-medium text-gray-900"
+          >
+            Titulação do Orientador:
+          </label>
+          <select
+            id="countries"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 col-span-3"
+          >
+            <option selected>- Selecione -</option>
+            <option value="graduado">Graduado</option>
+            <option value="especialista">Especialista</option>
+            <option value="mestre">Mestre</option>
+            <option value="doutor">Doutor</option>
+          </select>
+        </div>
+
+        <div className="grid grid-cols-4 items-center justify-items-end col-span-2 gap-4">
+          <label
+            htmlFor="countries"
+            className="block mb-2 text-sm text-right font-medium text-gray-900"
+          >
+            Titulação do Coorientador:
+          </label>
+          <select
+            id="countries"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 col-span-3"
+          >
+            <option selected>- Selecione -</option>
+            <option value="graduado">Graduado</option>
+            <option value="especialista">Especialista</option>
+            <option value="mestre">Mestre</option>
+            <option value="doutor">Doutor</option>
+          </select>
         </div>
 
         <label
