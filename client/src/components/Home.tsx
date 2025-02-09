@@ -3,7 +3,7 @@ export function Home() {
     <div className="rounded-md border-2 p-4">
       <form
         action="#"
-        className="grid grid-cols-2 justify-start gap-6 max-w-xl"
+        className="grid grid-cols-2 justify-start gap-6 max-w-2xl"
       >
         <div className="grid grid-cols-4 items-center justify-items-end gap-4 col-span-2">
           <label
@@ -195,6 +195,26 @@ export function Home() {
           />
         </div>
 
+        <div className="grid grid-cols-4 items-center justify-items-end col-span-2 gap-4">
+          <label
+            htmlFor="countries"
+            className="block mb-2 text-sm text-right font-medium text-gray-900"
+          >
+            Titulação do Orientador:
+          </label>
+          <select
+            id="countries"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 col-span-3"
+          >
+            <option selected>- Selecione -</option>
+            <option value="graduado">Graduado</option>
+            <option value="especialista">Especialista</option>
+            <option value="mestre">Mestre</option>
+            <option value="doutor">Doutor</option>
+          </select>
+        </div>
+
         <div className="grid grid-cols-4 items-center justify-items-end gap-4 col-span-2">
           <label
             htmlFor="name"
@@ -229,26 +249,6 @@ export function Home() {
             placeholder="Ex.: Barbosa"
             required
           />
-        </div>
-
-        <div className="grid grid-cols-4 items-center justify-items-end col-span-2 gap-4">
-          <label
-            htmlFor="countries"
-            className="block mb-2 text-sm text-right font-medium text-gray-900"
-          >
-            Titulação do Orientador:
-          </label>
-          <select
-            id="countries"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 col-span-3"
-          >
-            <option selected>- Selecione -</option>
-            <option value="graduado">Graduado</option>
-            <option value="especialista">Especialista</option>
-            <option value="mestre">Mestre</option>
-            <option value="doutor">Doutor</option>
-          </select>
         </div>
 
         <div className="grid grid-cols-4 items-center justify-items-end col-span-2 gap-4">
