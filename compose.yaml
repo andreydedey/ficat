@@ -9,5 +9,10 @@ services:
     ports:
       - 5050:5050
     command: python app.py
-    volumes:
-      - ./server:/usr/app
+    develop:
+      watch:
+        - action: sync
+          path: ./server
+          target: ./usr/app
+    # volumes:
+    #   - ./server:/usr/app
