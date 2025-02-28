@@ -4,25 +4,17 @@ services:
     ports:
       - 8080:5173
     command: npm run dev
-    develop:
-      watch:
-        - action: sync
-          path: ./client
-          target: /usr/app
-          ignore:
-            - node_modules/
-        - action: rebuild
-          path: package.json
-
   server:
     build: ./server
     ports:
       - 5050:5050
-    command: flask run --host=0.0.0.0 --port=5050
+    command: python app.py
     develop:
       watch:
         - action: sync
-          path: ./server
-          target: usr/app
+          path: ./client
+          target: ./usr/app
+          ignore:
+            - node_modules/
         - action: rebuild
-          path: usr/app
+          path: package.json
