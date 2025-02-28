@@ -17,7 +17,7 @@ export function Navbar() {
             className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg"
           >
             <FontAwesomeIcon icon={faHouse} className="text-xl me-2" />
-            o Lucas é muito ruim e não sabe de nada
+            elias
           </a>
         </li>
         <li className="me-2">

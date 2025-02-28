@@ -8,8 +8,21 @@ services:
       watch:
         - action: sync
           path: ./client
-          target: ./usr/app
+          target: /usr/app
           ignore:
             - node_modules/
         - action: rebuild
           path: package.json
+
+  server:
+    build: ./server
+    ports:
+      - 5050:5050
+    command: flask run --host=0.0.0.0 --port=5050
+    develop:
+      watch:
+        - action: sync
+          path: ./server
+          target: usr/app
+        - action: rebuild
+          path: usr/app
