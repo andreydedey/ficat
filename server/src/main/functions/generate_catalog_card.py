@@ -1,9 +1,7 @@
 import io
 from pydantic import BaseModel, Field
 from typing import Optional, List
-from reportlab.lib.pagesizes import A4
-from reportlab.pdfgen import canvas
-from reportlab.lib.utils import simpleSplit
+from fpdf import FPDF
 
 
 class CatalogCard(BaseModel):
@@ -23,66 +21,67 @@ class CatalogCard(BaseModel):
 
 
 def generate_catalog_card(data: CatalogCard):
-    buffer = io.BytesIO()
-    pdf = canvas.Canvas(buffer, pagesizes=A4)
-    width, height = A4
+    pdf = FPDF()
+    pdf.add_page()
+    page_width = pdf.w
 
-    pdf.setFont("Helvetica", 12)
+    pdf.set_font(data.fonte, size=10, style='B')
 
-    # Cabeçalho
-    pdf.drawString(
-        100, height - 50, "Dados Internacionais de Catalogação na Publicação (CIP)"
-    )
-    pdf.drawString(
-        100, height - 70, "Sistema de Bibliotecas da Universidade Federal do Pará"
-    )
-    pdf.drawString(
-        100,
-        height - 90,
-        "Gerada automaticamente pelo módulo Ficat, mediante os dados fornecidos pelo(a) autor(a)",
-    )
+    # pdf.set_left_margin(30)
 
-    # Nome e Título
-    pdf.setFont("Helvetica-Bold", 12)
-    pdf.drawString(
-        100, height - 120, f"{data.titulo_trabalho.upper()}, {data.nome_autor}."
+    pdf.cell(
+        page_width, 10, txt="Dados Internacionais de Catalogação na Publicação (CIP) de acordo com ISBD", ln=1, align='C'
     )
-    titulo_formatado = simpleSplit(
-        f"{data.titulo_trabalho} / {data.nome_autor}. — {data.ano_apresentacao}.",
-        400,
-        pdf._fontname,
-        pdf._fontsize,
+    pdf.cell(
+        page_width, 10, txt="Sistema de Bibliotecas da Universidade Federal do Pará", ln=1, align='C'
     )
-
-    # Lógica para lidar caso o título seja muito grande
-    for i, linha in enumerate(titulo_formatado):
-        pdf.drawString(100, height - 140 - (i * 15), linha)
-
-    pdf.drawString(
-        100, height - 160 - (len(titulo_formatado) * 15), f"{data.numero_folhas} f."
+    pdf.cell(
+        page_width,
+        10,
+        txt="Gerada automaticamente pelo módulo Ficat, mediante os dados fornecidos pelo(a)",
+        ln=1,
+        align='C'
     )
+    pdf.cell(page_width, 10, txt="autor(a)", ln=1, align='C')
 
-    # Orientador
-    pdf.drawString(
-        100,
-        height - 190 - (len(titulo_formatado) * 15),
-        f"Orientador(a): Prof. {data.titulacao_orientador} {data.nome_orientador}",
+    # Linha
+    # pdf.line(60, 50, 180, 50)
+
+    pdf.set_font(data.fonte, size=11, style='')
+
+    pdf.cell(page_width, 10, txt=f"{data.sobrenome_autor.upper()}, {data.nome_autor.capitalize()}", ln=1)
+    pdf.cell(
+        page_width,
+        10,
+        txt=f"{data.titulo_trabalho.upper()} / {data.nome_autor}. - {data.ano_apresentacao}",
+        ln=1,
+    )
+    pdf.cell(page_width, 10, txt=f"{data.numero_folhas} f.", ln=1)
+
+    pdf.cell(
+        page_width,
+        10,
+        txt=f"Orientador(a): Prof(a). {data.titulacao_orientador}. {data.nome_orientador}",
+        ln=1,
     )
 
-    # Tipo de trabalho e instituição
-    pdf.drawString(
-        100,
-        height - 240 - (len(titulo_formatado) * 15),
-        f"{data.tipo_trabalho} ({data.titulacao_orientador}) - {data.unidade}, {data.ano_apresentacao}",
+    pdf.cell(
+        page_width,
+        10,
+        txt=f"Tese ({data.titulacao_orientador}) - Universidade Federal do Pará,",
+        ln=1,
     )
-
-    # Palavras-chave
-    pdf.drawString(
-        100,
-        height - 240 - (len(titulo_formatado) * 15),
-        f"1. {', '.join(data.palavras_chave)}. I. Título",
+    pdf.cell(
+        page_width,
+        10,
+        txt=f"{data.unidade}, Programa de Pós-Graduação em Programa (tem que fazer), Belém, {data.ano_apresentacao}.",
+        ln=1,
     )
+    pdf.cell(page_width, 10, txt=f"1. {', '.join(data.palavras_chave)}. I. Título.", ln=1)
+    
+    pdf.cell(page_width, 10, txt=f"CDD (Tem que fazer)", ln=1, align='R')
 
-    pdf.save()
-    buffer.seek(0)
-    return buffer
+
+
+    pdf_bytes = pdf.output(dest="S").encode("latin-1")  # PDF será gerado em bytes
+    return io.BytesIO(pdf_bytes)
