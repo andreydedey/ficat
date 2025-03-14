@@ -1,5 +1,5 @@
 from flask import request, jsonify, send_file
-from ..functions.generate_catalog_card import CatalogCard, generate_catalog_card
+from src.app.functions.generate_catalog_card import CatalogCard, generate_catalog_card
 
 
 def catalog_card_route():
