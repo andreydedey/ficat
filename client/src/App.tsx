@@ -1,12 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
+import backgroundImage from "./assets/image/ficat_background.jpg";
+import logoHeader from "./assets/image/header.png";
 import { Home } from "./components/Home";
 import { Navbar } from "./components/Navbar";
 
 export function App() {
   return (
     <BrowserRouter>
-      <div className="flex justify-center">
+      <div
+        className="min-h-dvh flex justify-center bg-[auto_100px]"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
         <div>
+          <img className="h-36" src={logoHeader} alt="logo Header" />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
