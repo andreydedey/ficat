@@ -1,4 +1,5 @@
 import { ComponentProps } from "react";
+import {twMerge} from 'tailwind-merge'
 
 interface InputRootProps extends ComponentProps<"div"> {}
 
@@ -6,34 +7,29 @@ export function InputRoot({ ...props }: InputRootProps) {
   return <div {...props}></div>;
 }
 
+interface InputLabelProps extends ComponentProps<"label"> {
+  value: string
+}
+
+export function InputLabel({value, ...props}: InputLabelProps) {
+  return <label {...props} className="text-sm font-medium text-right text-gray-900">{value}</label>
+}
+
 interface InputFieldProps extends ComponentProps<"input"> {}
 
-export function InputField({ ...props }: InputFieldProps) {
+export function InputField({className, type, ...props }: InputFieldProps) {
+  let baseClass = "";
+  
+  if (type == 'text') {
+    baseClass = "bg-white border-[3px] border-gray-600 text-gray-900 text-sm rounded-lg outline-gray-300 focus:outline-1 focus:outline-gray-800 block w-full p-1.5" 
+  }
+
   return (
     <input
-      type="text"
-      className="border border-gray-300 text-gray-900 text-sm rounded-lg 
-            outline-gray-300 focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
+      type={type}
+      className={twMerge(baseClass, className)}
       {...props}
     />
   );
 }
 
-interface InputLabelProps extends ComponentProps<"label"> {
-    value: string
-}
-
-export function InputLabel({value, ...props}: InputLabelProps) {
-    return <label {...props} className="text-sm font-medium text-gray-900">value</label>
-}
-
-
-{/* <input
-  type="text"
-  id="name"
-  className="col-span-3 border border-gray-300 text-gray-900
-  text-sm rounded-lg outline-gray-300
-  focus:outline-2 focus:outline-blue-500 block w-full p-2.5"
-  placeholder="Ex.: Barbosa"
-  required
-/>; */}
