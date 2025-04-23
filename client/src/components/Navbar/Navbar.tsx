@@ -2,10 +2,10 @@ import {
   faCircleInfo,
   faComment,
   faHouse,
-  faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
+import { Instructions } from "./Instructions";
 
 export function Navbar() {
   return (
@@ -19,10 +19,11 @@ export function Navbar() {
           <FontAwesomeIcon icon={faCircleInfo} className="text-xl me-2" />
           Sobre
         </Link>
-        <Link to="#" className="flex-1 p-4 rounded-lg hover:bg-slate-200">
+        {/* <Link to="#" className="flex-1 p-4 rounded-lg hover:bg-slate-200">
           <FontAwesomeIcon icon={faQuestion} className="text-xl me-2" />
           Instruções
-        </Link>
+        </Link> */}
+        <Instructions />
         <Link to="#" className="flex-1 p-4 rounded-lg hover:bg-slate-200">
           <FontAwesomeIcon icon={faComment} className="text-xl me-2" />
           Fale Conosco
