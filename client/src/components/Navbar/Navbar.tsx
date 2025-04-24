@@ -24,7 +24,10 @@ export function Navbar() {
           Instruções
         </Link> */}
         <Instructions />
-        <Link to="#" className="flex-1 p-4 rounded-lg hover:bg-slate-200">
+        <Link
+          to="/talk_to_us"
+          className="flex-1 p-4 rounded-lg hover:bg-slate-200"
+        >
           <FontAwesomeIcon icon={faComment} className="text-xl me-2" />
           Fale Conosco
         </Link>

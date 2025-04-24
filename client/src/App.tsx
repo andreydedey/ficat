@@ -4,6 +4,7 @@ import logoHeader from "./assets/image/header.png";
 import { Home } from "./components/Home";
 import { Navbar } from "./components/Navbar/Navbar";
 import { About } from "./components/About";
+import { TalktoUs } from "./components/TalktoUs";
 
 export function App() {
   return (
@@ -18,6 +19,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/talk_to_us" element={<TalktoUs />} />
           </Routes>
         </div>
       </div>
