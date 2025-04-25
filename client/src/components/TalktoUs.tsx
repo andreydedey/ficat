@@ -72,7 +72,8 @@ export function TalktoUs() {
 
           <button
             type="submit"
-            className="self-center p-3 mt-3 text-sm font-medium rounded-lg bg-red-800 text-white hover:bg-red-900 w-24"
+            className="self-center p-2.5 mt-3 text-sm font-medium rounded-lg border-2 border-red-800 bg-white 
+            text-red-800 hover:text-white hover:bg-red-800 duration-300 w-24 cursor-pointer"
           >
             Enviar
           </button>
