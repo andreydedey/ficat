@@ -17,12 +17,13 @@ export function KeywordsFieldset() {
         Consulte vocabulário controlado
       </Link>
       <InputRoot className="grid grid-cols-4 grid-rows-5 justify-items-end items-center gap-4">
-        <InputLabel value="Assuntos (mín.: 1, máx.:5):" />
+        <InputLabel value="Assuntos (mín.: 1, máx.:5):" required />
         <InputField
           type="text"
           id="palavra_chave_1"
           className="col-span-3"
           placeholder="Palavra-Chave 1"
+          required
         />
         <InputField
           type="text"

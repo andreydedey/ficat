@@ -23,12 +23,14 @@ export function AuthorsFieldset({
             <InputLabel
               value={`Nome do ${index + 1}º Autor:`}
               htmlFor={`name_${index}`}
+              required={index === 0} // Make the first author's name required
             />
             <InputField
               type="text"
               id={`name_${index}`}
               className="col-span-3"
               placeholder={`Ex: João Gabriel`}
+              required={index === 0} // Make the first author's name required
             />
           </InputRoot>
 
@@ -36,12 +38,14 @@ export function AuthorsFieldset({
             <InputLabel
               value={`Sobrenome do ${index + 1}º Autor:`}
               htmlFor={`surname_${index}`}
+              required={index === 0} // Make the first author's surname required
             />
             <InputField
               type="text"
               id={`surname_${index}`}
               className="col-span-3"
               placeholder={`Ex: Oliveira`}
+              required={index === 0} // Make the first author's surname required
             />
           </InputRoot>
         </div>

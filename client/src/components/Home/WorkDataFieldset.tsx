@@ -7,7 +7,11 @@ export function WorkDataFieldset() {
         Dados do Trabalho
       </legend>
       <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-        <InputLabel value="Título do Trabalho:" htmlFor="titulo_trabalho" />
+        <InputLabel
+          value="Título do Trabalho:"
+          htmlFor="titulo_trabalho"
+          required
+        />
         <InputField
           type="text"
           id="titulo_trabalho"
@@ -30,12 +34,17 @@ export function WorkDataFieldset() {
       </InputRoot>
 
       <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-        <InputLabel value="Nome do Orientador:" htmlFor="subtitulo_trabalho" />
+        <InputLabel
+          value="Nome do Orientador:"
+          htmlFor="subtitulo_trabalho"
+          required
+        />
         <InputField
           type="text"
           id="nome_orientador"
           className="col-span-3"
           placeholder="Ex: Paulo Victor Lobato"
+          required
         />
       </InputRoot>
 
@@ -43,12 +52,14 @@ export function WorkDataFieldset() {
         <InputLabel
           value="Sobrenome do Orientador:"
           htmlFor="subtitulo_trabalho"
+          required
         />
         <InputField
           type="text"
           id="sobrenome_orientador"
           className="col-span-3"
           placeholder="Ex: Sarmento"
+          required
         />
       </InputRoot>
 
@@ -56,10 +67,12 @@ export function WorkDataFieldset() {
         <InputLabel
           value="Titulação do Orientador:"
           htmlFor="titulacao_orientador"
+          required
         />
         <select
           name="titulacao_orientador"
           id="titulacao_orientador"
+          required
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
@@ -105,20 +118,26 @@ export function WorkDataFieldset() {
       </InputRoot>
 
       <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-        <InputLabel value="Número de folhas:" htmlFor="numero_folhas" />
+        <InputLabel
+          value="Número de folhas:"
+          htmlFor="numero_folhas"
+          required
+        />
         <InputField
           type="text"
           id="numero_folhas"
           className="col-span-3"
           placeholder="Ex: xxi, 70"
+          required
         />
       </InputRoot>
 
       <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-        <InputLabel value="Ilustração:" htmlFor="ilustracao" />
+        <InputLabel value="Ilustração:" htmlFor="ilustracao" required />
         <select
           name="- Selecione -"
           id="ilustracao"
+          required
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
@@ -143,7 +162,7 @@ export function WorkDataFieldset() {
       </InputRoot>
 
       <InputRoot className="grid grid-cols-4 items-center gap-4">
-        <InputLabel value="Tipo de Trabalho:" />
+        <InputLabel value="Tipo de Trabalho:" required />
         <div className="flex col-span-3 gap-2 justify-items-normal items-center">
           <InputField
             name="tipo_trabalho"
@@ -151,6 +170,7 @@ export function WorkDataFieldset() {
             id="tese"
             className="w-4 h-4 border-gray-300 focus:ring-2
             focus:ring-blue-300"
+            required
           />
           <InputLabel value="Tese" />
 
