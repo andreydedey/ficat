@@ -13,7 +13,7 @@ export function App() {
         className="min-h-dvh flex justify-center bg-[auto_100px] mb-3"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <img className="h-36" src={logoHeader} alt="logo Header" />
           <Navbar />
           <Routes>

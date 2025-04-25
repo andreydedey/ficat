@@ -1,7 +1,20 @@
 import { Link } from "react-router";
 import { InputField, InputLabel, InputRoot } from "./Input/input";
+import { useState } from "react";
 
 export function Home() {
+  const [numberAutors, setNumberAutors] = useState(1);
+
+  const handleAddAutor = () => {
+    setNumberAutors((prev) => prev + 1);
+  };
+
+  const handleExcludeAutor = () => {
+    setNumberAutors((prev) => prev - 1);
+  };
+
+  console.log(numberAutors);
+
   return (
     <div className="rounded-md border-2 p-4 border-red-700">
       <form action="#" className="flex flex-col gap-3 justify-start max-w-2xl">
@@ -9,25 +22,61 @@ export function Home() {
           <legend className="p-2 ml-2 bg-red-800 rounded-lg text-white">
             Autor
           </legend>
-          <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-            <InputLabel value="Nome:" htmlFor="name" />
-            <InputField
-              type="text"
-              id="name"
-              className="col-span-3"
-              placeholder="Ex: João Henrique Rabelo"
-            />
-          </InputRoot>
 
-          <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-            <InputLabel value="Sobrenome:" htmlFor="sobrenome" />
-            <InputField
-              type="text"
-              id="sobrenome"
-              className="col-span-3"
-              placeholder="Ex: Barbosa"
-            />
-          </InputRoot>
+          {Array.from({ length: numberAutors }).map((_, index) => (
+            <div key={index} className="flex flex-col gap-4">
+              <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
+                <InputLabel
+                  value={`Nome do ${index + 1}º Autor:`}
+                  htmlFor={`name_${index}`}
+                />
+                <InputField
+                  type="text"
+                  id={`name_${index}`}
+                  className="col-span-3"
+                  placeholder={`Ex: João Gabriel`}
+                />
+              </InputRoot>
+
+              <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
+                <InputLabel
+                  value={`Sobrenome do ${index + 1}º Autor:`}
+                  htmlFor={`surname_${index}`}
+                />
+                <InputField
+                  type="text"
+                  id={`surname_${index}`}
+                  className="col-span-3"
+                  placeholder={`Ex: Oliveira`}
+                />
+              </InputRoot>
+            </div>
+          ))}
+
+          <div className="flex gap-3 justify-center items-center">
+            {numberAutors < 5 && (
+              <button
+                type="button"
+                onClick={handleAddAutor}
+                disabled={numberAutors >= 5}
+                className="self-center p-2.5 mt-3 text-sm font-medium rounded-lg border-2 border-red-800 bg-white
+              text-red-800 hover:text-white hover:bg-red-800 duration-300 cursor-pointer"
+              >
+                Adicionar Autor
+              </button>
+            )}
+            {numberAutors > 1 && (
+              <button
+                type="button"
+                onClick={handleExcludeAutor}
+                disabled={numberAutors == 1}
+                className="self-center p-2.5 mt-3 text-sm font-medium rounded-lg border-2 border-red-800 bg-white
+              text-red-800 hover:text-white hover:bg-red-800 duration-300 cursor-pointer"
+              >
+                Excluir Autor
+              </button>
+            )}
+          </div>
         </fieldset>
 
         <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
@@ -182,7 +231,6 @@ export function Home() {
               <InputField
                 name="tipo_trabalho"
                 type="radio"
-                checked
                 id="tese"
                 className="w-4 h-4 border-gray-300 focus:ring-2
             focus:ring-blue-300"
