@@ -1,7 +1,7 @@
 from flask import Flask
-from src.app.routes.catalog_card_route import catalog_card_route
-from src.app.routes.send_email_talkToUs_route import send_email_talkToUs_route
-from src.app.config.mail_config import create_mail_config
+from src.routes.catalog_card_route import catalog_card_route
+from src.routes.send_email_talkToUs_route import send_email_talkToUs_route
+from src.config.mail_config import create_mail_config
 
 app = Flask(__name__)
 

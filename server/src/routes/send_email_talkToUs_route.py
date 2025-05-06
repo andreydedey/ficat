@@ -1,8 +1,8 @@
 from flask import request, jsonify
-from src.app.functions.generate_email import Email, generate_email
+from src.functions.generate_email import Email, generate_email
 
 def send_email_talkToUs_route():
-    from src.app.config.server import mail
+    from server.src.server import mail
     try:
         msg = Email(**request.json)
         sender = generate_email(msg)
