@@ -1,16 +1,21 @@
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
+
 import { InputField, InputLabel, InputRoot } from "../Input/input";
 
-interface AuthorsFieldsetProps {
-  numberAutors: number;
-  handleAddAutor: () => void;
-  handleExcludeAutor: () => void;
-}
+export function AuthorsFieldset() {
+  const [numberAutors, setNumberAutors] = useState(1);
 
-export function AuthorsFieldset({
-  numberAutors,
-  handleAddAutor,
-  handleExcludeAutor,
-}: AuthorsFieldsetProps) {
+  const handleAddAutor = () => {
+    setNumberAutors((prev) => prev + 1);
+  };
+
+  const handleExcludeAutor = () => {
+    setNumberAutors((prev) => prev - 1);
+  };
+
+  const { register } = useFormContext();
+
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
       <legend className="p-2 ml-2 bg-red-800 rounded-lg text-white">
@@ -28,6 +33,7 @@ export function AuthorsFieldset({
             <InputField
               type="text"
               id={`name_${index}`}
+              {...register(`nomes_autor[${index}].nome` as const)} // Register the input with react-hook-form
               className="col-span-3"
               placeholder={`Ex: João Gabriel`}
               required={index === 0} // Make the first author's name required
@@ -43,6 +49,7 @@ export function AuthorsFieldset({
             <InputField
               type="text"
               id={`surname_${index}`}
+              {...register(`nomes_autor[${index}].sobrenome` as const)} // Register the input with react-hook-form
               className="col-span-3"
               placeholder={`Ex: Oliveira`}
               required={index === 0} // Make the first author's surname required

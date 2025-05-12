@@ -1,8 +1,0 @@
-{
-    "editor.codeActionsOnSave": {
-        "quickfix.biome": "explicit"
-    },
-    "files.exclude": {
-        "**/__pycache__": true
-    }
-}
