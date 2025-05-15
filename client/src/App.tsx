@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import backgroundImage from "./assets/image/ficat_background.jpg";
 import logoHeader from "./assets/image/header.png";
+import { About } from "./components/About";
 import { Home } from "./components/Home/Home";
 import { Navbar } from "./components/Navbar/Navbar";
-import { About } from "./components/About";
 import { TalktoUs } from "./components/TalktoUs";
 
 export function App() {

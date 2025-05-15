@@ -1,9 +1,6 @@
-import { useFormContext } from "react-hook-form";
 import { InputField, InputLabel, InputRoot } from "../Input/input";
 
 export function WorkDataFieldset() {
-  const { register } = useFormContext();
-
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
       <legend className="p-2 ml-2 bg-red-800 rounded-lg text-white">
@@ -18,7 +15,7 @@ export function WorkDataFieldset() {
         <InputField
           type="text"
           id="titulo_trabalho"
-          {...register("titulo_trabalho")}
+          name="titulo_trabalho"
           className="col-span-3"
           placeholder="Ex: Redes sociais em bibliotecas universitárias"
         />
@@ -32,7 +29,7 @@ export function WorkDataFieldset() {
         <InputField
           type="text"
           id="subtitulo_trabalho"
-          {...register("subtitulo_trabalho")}
+          name="subtitulo_trabalho"
           className="col-span-3"
           placeholder="Ex: Estudo exploratório"
         />
@@ -47,7 +44,7 @@ export function WorkDataFieldset() {
         <InputField
           type="text"
           id="nome_orientador"
-          {...register("nome_orientador")}
+          name="nome_orientador"
           className="col-span-3"
           placeholder="Ex: Paulo Victor Lobato"
           required
@@ -63,7 +60,7 @@ export function WorkDataFieldset() {
         <InputField
           type="text"
           id="sobrenome_orientador"
-          {...register("sobrenome_orientador")}
+          name="sobrenome_orientador"
           className="col-span-3"
           placeholder="Ex: Sarmento"
           required
@@ -78,7 +75,7 @@ export function WorkDataFieldset() {
         />
         <select
           id="titulacao_orientador"
-          {...register("titulacao_orientador")}
+          name="titulacao_orientador"
           required
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
@@ -97,7 +94,7 @@ export function WorkDataFieldset() {
             type="checkbox"
             value="Orientadora"
             id="Orientadora"
-            {...register("Orientadora")}
+            name="orientadora"
             className="w-4 h-4
               text-blue-600 bg-gray-300 border-gray-300 rounded-sm"
           />
@@ -113,7 +110,7 @@ export function WorkDataFieldset() {
         <InputLabel value="Ano de orientação:" htmlFor="ano_orientacao" />
         <select
           id="ano_orientacao"
-          {...register("ano_orientacao")}
+          name="ano_orientacao"
           required
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
@@ -135,7 +132,7 @@ export function WorkDataFieldset() {
         <InputField
           type="text"
           id="numero_folhas"
-          {...register("numero_folhas")}
+          name="numero_folhas"
           className="col-span-3"
           placeholder="Ex: xxi, 70"
           required
@@ -146,7 +143,7 @@ export function WorkDataFieldset() {
         <InputLabel value="Ilustração:" htmlFor="ilustracao" required />
         <select
           id="ilustracao"
-          {...register("ilustracao")}
+          name="ilustracao"
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
@@ -161,7 +158,7 @@ export function WorkDataFieldset() {
         <InputLabel value="Unidade Acadêmica:" htmlFor="unidade_academica" />
         <select
           id="unidade_academica"
-          {...register("unidade_academica")}
+          name="unidade_academica"
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
@@ -176,6 +173,8 @@ export function WorkDataFieldset() {
           <InputField
             type="radio"
             id="tese"
+            name="tipo_trabalho"
+            value={"tese"}
             className="w-4 h-4 border-gray-300 focus:ring-2
             focus:ring-blue-300"
             required
@@ -184,6 +183,7 @@ export function WorkDataFieldset() {
 
           <InputField
             name="tipo_trabalho"
+            value={"dissertacao"}
             type="radio"
             id="dissertacao"
             className="w-4 h-4 border-gray-300 focus:ring-2
@@ -193,6 +193,7 @@ export function WorkDataFieldset() {
 
           <InputField
             name="tipo_trabalho"
+            value={"monografia"}
             type="radio"
             id="tese"
             className="w-4 h-4 border-gray-300 focus:ring-2
@@ -202,6 +203,7 @@ export function WorkDataFieldset() {
 
           <InputField
             name="tipo_trabalho"
+            value={"trabalho_conclusao"}
             type="radio"
             id="tese"
             className="w-4 h-4 border-gray-300 focus:ring-2
@@ -219,7 +221,7 @@ export function WorkDataFieldset() {
         <InputField
           type="text"
           id="area_do_conhecimento"
-          {...register("area_do_conhecimento")}
+          name="area_do_conhecimento"
           placeholder="Buscar um assunto no Botão Categorias de Assunto"
           className="col-span-3"
         />

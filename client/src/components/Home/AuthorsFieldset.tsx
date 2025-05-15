@@ -14,8 +14,6 @@ export function AuthorsFieldset() {
     setNumberAutors((prev) => prev - 1);
   };
 
-  const { register } = useFormContext();
-
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
       <legend className="p-2 ml-2 bg-red-800 rounded-lg text-white">
@@ -33,9 +31,9 @@ export function AuthorsFieldset() {
             <InputField
               type="text"
               id={`name_${index}`}
-              {...register(`nomes_autor[${index}].nome` as const)} // Register the input with react-hook-form
+              name={`nomes_autor[${index}].nome` as const}
               className="col-span-3"
-              placeholder={`Ex: João Gabriel`}
+              placeholder="Ex: João Gabriel"
               required={index === 0} // Make the first author's name required
             />
           </InputRoot>
@@ -49,9 +47,9 @@ export function AuthorsFieldset() {
             <InputField
               type="text"
               id={`surname_${index}`}
-              {...register(`nomes_autor[${index}].sobrenome` as const)} // Register the input with react-hook-form
+              name={`nomes_autor[${index}].sobrenome` as const}
               className="col-span-3"
-              placeholder={`Ex: Oliveira`}
+              placeholder="Ex: Oliveira"
               required={index === 0} // Make the first author's surname required
             />
           </InputRoot>

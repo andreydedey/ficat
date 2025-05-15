@@ -1,10 +1,7 @@
 import { Link } from "react-router";
-import { useFormContext } from "react-hook-form";
 import { InputField, InputLabel, InputRoot } from "../Input/input";
 
 export function KeywordsFieldset() {
-  const { register } = useFormContext();
-
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
       <legend className="p-2 ml-2 bg-red-800 rounded-lg text-white">
@@ -28,7 +25,7 @@ export function KeywordsFieldset() {
             key={i}
             type="text"
             id={`palavra_chave_${i + 1}`}
-            {...register(`palavras_chave.${i}`)}
+            name={`palavras_chave.${i}`}
             className={`col-span-3 ${i > 0 ? "col-start-2" : ""}`}
             placeholder={`Palavra-Chave ${i + 1}`}
             required={i === 0}
@@ -40,7 +37,7 @@ export function KeywordsFieldset() {
         <InputLabel value="Fonte:  " htmlFor="font" />
         <select
           id="font"
-          {...register("fonte")}
+          name="fonte"
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"

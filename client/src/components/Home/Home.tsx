@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { AuthorsFieldset } from "./AuthorsFieldset";
 import { KeywordsFieldset } from "./KeywordsFieldset";
 import { WorkDataFieldset } from "./WorkDataFieldset";
@@ -41,11 +41,7 @@ export function Home() {
           onSubmit={handleSubmit(onsubmit)}
           className="flex flex-col gap-3 justify-start max-w-2xl"
         >
-          <AuthorsFieldset
-          // numberAutors={numberAutors}
-          // handleAddAutor={handleAddAutor}
-          // handleExcludeAutor={handleExcludeAutor}
-          />
+          <AuthorsFieldset />
           <WorkDataFieldset />
           <KeywordsFieldset />
           <button
