@@ -1,29 +1,32 @@
 import { useState } from "react";
+import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { AuthorsFieldset } from "./AuthorsFieldset";
 import { KeywordsFieldset } from "./KeywordsFieldset";
 import { WorkDataFieldset } from "./WorkDataFieldset";
+
+
 
 type Autor = {
   nome: string;
   sobrenome: string;
 };
 
-type FormData = {
+const createCatalogCardFormSchema = z.object({
   nomes_autor: Autor[];
-  titulo_trabalho: string;
-  subtitulo_trabalho: string;
-  nome_orientador: string;
-  titulacao_orientador: string;
-  ano_apresentacao: number;
-  numero_folhas: string;
-  ilustracao: string;
-  unidade: string;
-  tipo_trabalho: string;
-  area_conhecimento: string;
+  titulo_trabalho: z.string();
+  subtitulo_trabalho: z.string();
+  nome_orientador: z.string();
+  titulacao_orientador: z.string();
+  ano_apresentacao: z.number();
+  numero_folhas: z.string();
+  ilustracao: z.string();
+  unidade: z.string();
+  tipo_trabalho: z.string();
+  area_conhecimento: z.string();
   palavras_chave: string[];
-  fonte: string;
-};
+  fonte: z.string();
+});
 
 export function Home() {
   const methods = useForm<FormData>();
