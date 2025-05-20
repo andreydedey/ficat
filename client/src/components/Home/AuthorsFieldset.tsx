@@ -1,17 +1,23 @@
-import { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 
 import { InputField, InputLabel, InputRoot } from "../Input/input";
 
 export function AuthorsFieldset() {
-  const [numberAutors, setNumberAutors] = useState(1);
+  const { control } = useFormContext();
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "nomes_autor",
+  });
 
   const handleAddAutor = () => {
-    setNumberAutors((prev) => prev + 1);
+    append({ nome: '', sobrenome:  '' })
   };
 
   const handleExcludeAutor = () => {
-    setNumberAutors((prev) => prev - 1);
+    if (fields.length > 1) {
+      remove(fields.length - 1)
+    }
   };
 
   return (
@@ -20,44 +26,43 @@ export function AuthorsFieldset() {
         Autor
       </legend>
 
-      {Array.from({ length: numberAutors }).map((_, index) => (
-        <div key={index} className="flex flex-col gap-4">
-          <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-            <InputLabel
-              value={`Nome do ${index + 1}º Autor:`}
-              htmlFor={`name_${index}`}
-              required={index === 0} // Make the first author's name required
-            />
-            <InputField
-              type="text"
-              id={`name_${index}`}
-              name={`nomes_autor[${index}].nome` as const}
-              className="col-span-3"
-              placeholder="Ex: João Gabriel"
-              required={index === 0} // Make the first author's name required
-            />
-          </InputRoot>
+      {fields.map((field, index) => {
+        const authorName = `nomes_autor.${index}.nome`
+        const authorSurname = `nomes_autor.${index}.sobrenome`
 
-          <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-            <InputLabel
-              value={`Sobrenome do ${index + 1}º Autor:`}
-              htmlFor={`surname_${index}`}
-              required={index === 0} // Make the first author's surname required
-            />
-            <InputField
-              type="text"
-              id={`surname_${index}`}
-              name={`nomes_autor[${index}].sobrenome` as const}
-              className="col-span-3"
-              placeholder="Ex: Oliveira"
-              required={index === 0} // Make the first author's surname required
-            />
-          </InputRoot>
-        </div>
-      ))}
+        return (
+          <div key={field.id} className="flex flex-col gap-4">
+            <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
+              <InputLabel
+                value={`Nome do ${index + 1}º Autor:`}
+                htmlFor={authorName}
+              />
+              <InputField
+                type="text"
+                name={authorName}
+                className="col-span-3"
+                placeholder="Ex: João Gabriel"
+              />
+            </InputRoot>
+
+            <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
+              <InputLabel
+                value={`Sobrenome do ${index + 1}º Autor:`}
+                htmlFor={authorSurname}
+              />
+              <InputField
+                type="text"
+                name={authorSurname}
+                className="col-span-3"
+                placeholder="Ex: Oliveira"
+              />
+            </InputRoot>
+          </div>
+        );
+      })}
 
       <div className="flex gap-3 justify-center items-center">
-        {numberAutors < 5 && (
+        {fields.length < 5 && (
           <button
             type="button"
             onClick={handleAddAutor}
@@ -67,7 +72,7 @@ export function AuthorsFieldset() {
             Adicionar Autor
           </button>
         )}
-        {numberAutors > 1 && (
+        {fields.length > 1 && (
           <button
             type="button"
             onClick={handleExcludeAutor}

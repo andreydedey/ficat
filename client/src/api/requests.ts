@@ -1,5 +1,5 @@
-import { api } from "./api"
+import { api } from "./api";
 
 const generateCatalogCard = () => {
-    api.post('/generate_catalog_card')
-}
+  api.post("/generate_catalog_card");
+};

@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { useFormContext } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 interface InputRootProps extends ComponentProps<"div"> {}
@@ -26,6 +26,41 @@ export function InputLabel({ value, required, ...props }: InputLabelProps) {
   );
 }
 
+function get(obj: Record<any, any>, path: string) {
+  const travel = (regexp: RegExp) =>
+    String.prototype.split
+      .call(path, regexp)
+      .filter(Boolean)
+      .reduce((res, key) => (res !== null && res !== undefined ? res[key] : res), obj);
+
+  const result = travel(/[,[\]]+?/) || travel(/[,[\].]+?/);
+  
+  return result
+};
+
+interface ErrorMessageProps {
+  field: string
+}
+
+export function ErrorMessage({field}: ErrorMessageProps) {
+  const { formState: { errors } } = useFormContext();
+  
+  const fieldError = get(errors, field)
+
+  console.log(field)
+  
+  if (!fieldError) {
+    console.log('não teve erro')
+    return null
+  }
+  
+  console.log('PASSOU POR UM ERRO')
+
+  return (
+    <span className="text-xs text-red-500 mt-1">{fieldError.message?.toString()}</span>
+  )
+}
+
 interface InputFieldProps extends ComponentProps<"input"> {}
 
 export function InputField({
@@ -48,11 +83,11 @@ export function InputField({
   }
 
   return (
-    <input
-      type={type}
-      className={twMerge(baseClass, className)}
-      {...register(name)}
-      {...props}
-    />
+      <input
+        type={type}
+        className={twMerge(baseClass, className)}
+        {...register(name)}
+        {...props}
+      />
   );
 }
