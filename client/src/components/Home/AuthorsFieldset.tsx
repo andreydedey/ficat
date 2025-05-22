@@ -11,12 +11,12 @@ export function AuthorsFieldset() {
   });
 
   const handleAddAutor = () => {
-    append({ nome: '', sobrenome:  '' })
+    append({ nome: "", sobrenome: "" });
   };
 
   const handleExcludeAutor = () => {
     if (fields.length > 1) {
-      remove(fields.length - 1)
+      remove(fields.length - 1);
     }
   };
 
@@ -27,8 +27,8 @@ export function AuthorsFieldset() {
       </legend>
 
       {fields.map((field, index) => {
-        const authorName = `nomes_autor.${index}.nome`
-        const authorSurname = `nomes_autor.${index}.sobrenome`
+        const authorName = `nomes_autor.${index}.nome`;
+        const authorSurname = `nomes_autor.${index}.sobrenome`;
 
         return (
           <div key={field.id} className="flex flex-col gap-4">

@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { useForm, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 interface InputRootProps extends ComponentProps<"div"> {}
@@ -31,34 +31,41 @@ function get(obj: Record<any, any>, path: string) {
     String.prototype.split
       .call(path, regexp)
       .filter(Boolean)
-      .reduce((res, key) => (res !== null && res !== undefined ? res[key] : res), obj);
+      .reduce(
+        (res, key) => (res !== null && res !== undefined ? res[key] : res),
+        obj,
+      );
 
   const result = travel(/[,[\]]+?/) || travel(/[,[\].]+?/);
-  
-  return result
-};
 
-interface ErrorMessageProps {
-  field: string
+  return result;
 }
 
-export function ErrorMessage({field}: ErrorMessageProps) {
-  const { formState: { errors } } = useFormContext();
-  
-  const fieldError = get(errors, field)
+interface ErrorMessageProps {
+  field: string;
+}
 
-  console.log(field)
-  
+export function ErrorMessage({ field }: ErrorMessageProps) {
+  const {
+    formState: { errors },
+  } = useFormContext();
+
+  const fieldError = get(errors, field);
+
+  console.log(field);
+
   if (!fieldError) {
-    console.log('não teve erro')
-    return null
+    console.log("não teve erro");
+    return null;
   }
-  
-  console.log('PASSOU POR UM ERRO')
+
+  console.log("PASSOU POR UM ERRO");
 
   return (
-    <span className="text-xs text-red-500 mt-1">{fieldError.message?.toString()}</span>
-  )
+    <span className="text-xs text-red-500 mt-1">
+      {fieldError.message?.toString()}
+    </span>
+  );
 }
 
 interface InputFieldProps extends ComponentProps<"input"> {}
@@ -83,11 +90,11 @@ export function InputField({
   }
 
   return (
-      <input
-        type={type}
-        className={twMerge(baseClass, className)}
-        {...register(name)}
-        {...props}
-      />
+    <input
+      type={type}
+      className={twMerge(baseClass, className)}
+      {...register(name)}
+      {...props}
+    />
   );
 }
