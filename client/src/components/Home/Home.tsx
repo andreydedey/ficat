@@ -4,16 +4,19 @@ import { FormProvider, useForm } from "react-hook-form";
 import { AuthorsFieldset } from "./AuthorsFieldset";
 import { KeywordsFieldset } from "./KeywordsFieldset";
 import { WorkDataFieldset } from "./WorkDataFieldset";
+import { generateCatalogCard } from "../../api/requests";
 
-type createCatalogCardData = z.infer<typeof createCatalogCardFormSchema>;
+export type createCatalogCardData = z.infer<typeof createCatalogCardFormSchema>;
 
 const createCatalogCardFormSchema = z.object({
-  nomes_autor: z.array(
-    z.object({
-      nome: z.string().nonempty(),
-      sobrenome: z.string().nonempty(),
-    }),
-  ).min(1),
+  nomes_autor: z
+    .array(
+      z.object({
+        nome: z.string().nonempty(),
+        sobrenome: z.string().nonempty(),
+      }),
+    )
+    .min(1),
   titulo_trabalho: z.string().nonempty("O título do trabalho é obrigatório"),
   subtitulo_trabalho: z.string(),
   nome_orientador: z.string(),
@@ -24,11 +27,13 @@ const createCatalogCardFormSchema = z.object({
   unidade_academica: z.string(),
   tipo_trabalho: z.string(),
   area_conhecimento: z.string(),
-  palavras_chave: z.array(
-    z.object({
-      value: z.string().nonempty(),
-    })
-  ).min(1),
+  palavras_chave: z
+    .array(
+      z.object({
+        value: z.string().nonempty(),
+      }),
+    )
+    .min(1),
   fonte: z.string(),
 });
 
@@ -36,18 +41,17 @@ export function Home() {
   const methods = useForm<createCatalogCardData>({
     resolver: zodResolver(createCatalogCardFormSchema),
     defaultValues: {
-      nomes_autor: [{nome: "", sobrenome: ""}],
-      palavras_chave: [{value: ""}]
-    }
+      nomes_autor: [{ nome: "", sobrenome: "" }],
+      palavras_chave: [{ value: "" }],
+    },
   });
 
-  const {
-    handleSubmit,
-  } = methods;
+  const { handleSubmit } = methods;
 
   const onsubmit = (data: createCatalogCardData) => {
     console.log("Form submitted!");
     console.log(data);
+    generateCatalogCard(data);
   };
 
   return (

@@ -3,10 +3,12 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 from fpdf import FPDF
 
+class Autor(BaseModel):
+    nome: str
+    sobrenome: str
 
 class CatalogCard(BaseModel):
-    nome_autor: str
-    sobrenome_autor: str
+    nomes_autor: List[Autor]
     titulo_trabalho: str
     subtitulo_trabalho: Optional[str] = None
     nome_orientador: str
@@ -49,14 +51,14 @@ def generate_catalog_card(data: CatalogCard):
         15, 5, "T346t", ln=0
     )  # Prefixo fixo ( Como nao temos Banco ainda deixei esse prefixo)
     pdf.cell(
-        page_width - 15, 5, f"{data.sobrenome_autor.upper()}, {data.nome_autor}.", ln=1
+        page_width - 15, 5, f"{data.nomes_autor[0].sobrenome.upper()}, {data.nomes_autor[0].nome}.", ln=1
     )
 
     pdf.cell(15, 5, "", ln=0)  # Espaço para recuo
     pdf.multi_cell(
         page_width - 15,
         5,
-        f"{indent_space}{data.titulo_trabalho} - {data.nome_autor}. - {data.ano_apresentacao}.",
+        f"{indent_space}{data.titulo_trabalho} - {data.nomes_autor[0].nome}. - {data.ano_apresentacao}.",
         align="J",
     )
 

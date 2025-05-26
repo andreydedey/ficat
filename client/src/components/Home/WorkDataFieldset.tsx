@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { InputField, InputLabel, InputRoot } from "../Input/input";
 
 export function WorkDataFieldset() {
-  const { register } = useFormContext()
+  const { register } = useFormContext();
 
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
@@ -77,7 +77,7 @@ export function WorkDataFieldset() {
         />
         <select
           id="titulacao_orientador"
-          {...register('titulacao_orientador')}
+          {...register("titulacao_orientador")}
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
@@ -111,7 +111,7 @@ export function WorkDataFieldset() {
         <InputLabel value="Ano de orientação:" htmlFor="ano_orientacao" />
         <select
           id="ano_orientacao"
-          {...register('ano_orientacao')}
+          {...register("ano_orientacao")}
           required
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
@@ -143,7 +143,7 @@ export function WorkDataFieldset() {
         <InputLabel value="Ilustração:" htmlFor="ilustracao" required />
         <select
           id="ilustracao"
-          {...register('ilustracao')}
+          {...register("ilustracao")}
           className="col-span-2 w-full bg-gray-50 border-2 
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
@@ -163,7 +163,7 @@ export function WorkDataFieldset() {
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
         >
-          <option value="">ICEN</option>
+          <option value="ICEN">ICEN</option>
         </select>
       </InputRoot>
 
@@ -213,10 +213,7 @@ export function WorkDataFieldset() {
       </InputRoot>
 
       <InputRoot className="grid grid-cols-4 justity-items-end items-center gap-4">
-        <InputLabel
-          value="Área do conhecimento"
-          htmlFor="area_conhecimento"
-        />
+        <InputLabel value="Área do conhecimento" htmlFor="area_conhecimento" />
         <InputField
           type="text"
           name="area_conhecimento"
