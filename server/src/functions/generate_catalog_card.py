@@ -1,5 +1,5 @@
 import io
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Optional, List
 from fpdf import FPDF
 
@@ -7,20 +7,23 @@ class Autor(BaseModel):
     nome: str
     sobrenome: str
 
+class Palavra_Chave(BaseModel):
+    value: str
+
 class CatalogCard(BaseModel):
     nomes_autor: List[Autor]
     titulo_trabalho: str
     subtitulo_trabalho: Optional[str] = None
     nome_orientador: str
     titulacao_orientador: Optional[str]
-    ano_apresentacao: int
-    numero_folhas: int
+    ano_orientacao: str
+    numero_folhas: str
     ilustracao: str
-    unidade: str
+    unidade_academica: str
     tipo_trabalho: str
     curso_programa: Optional[str] = None
     area_conhecimento: Optional[str]
-    palavras_chave: List[str] = Field(..., min_items=1)
+    palavras_chave: List[Palavra_Chave]
     fonte: str
 
 
@@ -58,7 +61,7 @@ def generate_catalog_card(data: CatalogCard):
     pdf.multi_cell(
         page_width - 15,
         5,
-        f"{indent_space}{data.titulo_trabalho} - {data.nomes_autor[0].nome}. - {data.ano_apresentacao}.",
+        f"{indent_space}{data.titulo_trabalho} - {data.nomes_autor[0].nome}. - {data.ano_orientacao}.",
         align="J",
     )
 
@@ -98,7 +101,7 @@ def generate_catalog_card(data: CatalogCard):
     pdf.multi_cell(
         page_width - 15,
         5,
-        f"{data.curso_programa}, {data.unidade}, {data.area_conhecimento}, {data.ano_apresentacao}.",
+        f"{data.curso_programa}, {data.unidade_academica}, {data.area_conhecimento}, {data.ano_orientacao}.",
         align="J",
     )
 
@@ -106,7 +109,7 @@ def generate_catalog_card(data: CatalogCard):
 
     # Palavras-chave
     palavras_chave_formatadas = (
-        f"{indent_space}1. {'; '.join(data.palavras_chave)}. I. Título."
+        f"{indent_space}1. {'; '.join(palavra.value for palavra in data.palavras_chave)}. I. Título."
     )
     pdf.cell(15, 5, "", ln=0)
     pdf.multi_cell(page_width - 15, 5, palavras_chave_formatadas, align="J")

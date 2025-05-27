@@ -49,7 +49,6 @@ export function Home() {
   const { handleSubmit } = methods;
 
   const onsubmit = (data: createCatalogCardData) => {
-    console.log("Form submitted!");
     console.log(data);
     generateCatalogCard(data);
   };
