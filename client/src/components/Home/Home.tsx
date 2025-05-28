@@ -5,6 +5,8 @@ import { AuthorsFieldset } from "./AuthorsFieldset";
 import { KeywordsFieldset } from "./KeywordsFieldset";
 import { WorkDataFieldset } from "./WorkDataFieldset";
 import { generateCatalogCard } from "../../api/requests";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 export type createCatalogCardData = z.infer<typeof createCatalogCardFormSchema>;
 
@@ -38,6 +40,9 @@ const createCatalogCardFormSchema = z.object({
 });
 
 export function Home() {
+  const location = useLocation();
+  const [message, setMessage] = useState("");
+
   const methods = useForm<createCatalogCardData>({
     resolver: zodResolver(createCatalogCardFormSchema),
     defaultValues: {
@@ -53,8 +58,20 @@ export function Home() {
     generateCatalogCard(data);
   };
 
+  useEffect(() => {
+    if (location.state?.successMessage) {
+      setMessage(location.state.successMessage);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+
   return (
     <div className="rounded-md border-2 p-4 border-red-700">
+      {message && (
+        <div className="bg-green-100 text-green-800 p-2 rounded mb-4 text-sm border border-green-300">
+          {message}
+        </div>
+      )}
       <FormProvider {...methods}>
         <form
           onSubmit={handleSubmit(onsubmit)}

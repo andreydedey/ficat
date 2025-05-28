@@ -27,7 +27,7 @@ app.add_url_rule(
 )
 
 app.add_url_rule(
-    "/send_email_talkToUs",
+    "/send_email",
     "send_email_talkToUs_route",
     send_email_talkToUs_route,
     methods=["POST"],

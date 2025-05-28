@@ -2,7 +2,7 @@ from flask import request, jsonify
 from src.functions.generate_email import Email, generate_email
 
 def send_email_talkToUs_route():
-    from server.src.server import mail
+    from src.server import mail
     try:
         msg = Email(**request.json)
         sender = generate_email(msg)

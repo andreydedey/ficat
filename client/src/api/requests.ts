@@ -1,5 +1,6 @@
 import { api } from "./api";
 import type { createCatalogCardData } from "../components/Home/Home"
+import { sendEmailData } from "../components/TalktoUs";
 
 export const generateCatalogCard = async (data: createCatalogCardData) => {
   try {
@@ -16,3 +17,12 @@ export const generateCatalogCard = async (data: createCatalogCardData) => {
     console.error("Erro ao gerador o PDF: ", error);
   }
 };
+
+
+export const sendEmail = async (data: sendEmailData) => {
+  try {
+    const response = await api.post("/send_email", data)
+  } catch (error) {
+    console.error("Erro ao enviar o Email: ", error)
+  }
+}
