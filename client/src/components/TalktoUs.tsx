@@ -10,6 +10,14 @@ const sendEmailFormSchema = z.object({
   phonenumber: z.string().optional(),
   email: z.string().email().nonempty(),
   message: z.string().optional(),
+  attachment: z
+    .instanceof(FileList)
+    .refine(
+      (list) => list.length === 0 || list.item(0)!.size <= 5 * 1024 * 1024,
+      "O arquivo pode ter no máximo 5MB",
+    )
+    .transform((list) => list.item(0))
+    .optional(),
 });
 
 export type sendEmailData = z.infer<typeof sendEmailFormSchema>;
@@ -24,6 +32,7 @@ export function TalktoUs() {
   const { register, handleSubmit } = methods;
 
   const submitEmail = (data: sendEmailData) => {
+    console.log(data);
     sendEmail(data);
     navigate("/", { state: { successMessage: "Email enviado com sucesso!" } });
   };
@@ -89,15 +98,15 @@ export function TalktoUs() {
               ></textarea>
             </InputRoot>
             {/* File Upload */}
-            {/* <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
-              <InputLabel value="Arquivo:" htmlFor="file" />
+            <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
+              <InputLabel value="Arquivo:" htmlFor="attachment" />
               <InputField
-                name="file"
+                name="attachment"
                 type="file"
                 className="col-span-3 w-full text-sm border rounded-lg cursor-pointer focus:outline-none bg-white
                 file:py-1.5 file:px-3 file:text-white file:bg-red-800"
               />
-            </InputRoot> */}
+            </InputRoot>
 
             <button
               type="submit"

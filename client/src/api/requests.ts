@@ -21,7 +21,9 @@ export const generateCatalogCard = async (data: createCatalogCardData) => {
 
 export const sendEmail = async (data: sendEmailData) => {
   try {
-    const response = await api.post("/send_email", data)
+    const response = await api.post("/send_email", data, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
   } catch (error) {
     console.error("Erro ao enviar o Email: ", error)
   }
