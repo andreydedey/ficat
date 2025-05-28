@@ -8,6 +8,7 @@ class Email(BaseModel):
     email: str
     phonenumber: Optional[str]
     message: Optional[str]
+    attachment: Optional[object] = None
 
 
 def generate_email(data: Email):
@@ -19,5 +20,9 @@ def generate_email(data: Email):
         body=message_body,  # Mensagem
         sender=data.email,
     )
+
+    if data.attachment:
+        file = data.attachment
+        msg.attach(file.filename, file.content_type, file.read())
 
     return msg
