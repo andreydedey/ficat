@@ -8,8 +8,6 @@ import produto_pdf from "../../assets/pdf/Produto.pdf";
 export function Instructions() {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log("isOpen", isOpen);
-
   return (
     <div className="py-4 flex-1 rounded-lg hover:bg-slate-200 relative">
       <button

@@ -1,15 +1,17 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider } from "react-hook-form";
-import { InputField, InputLabel, InputRoot } from "./Input/input";
+import { InputField, InputRoot } from "./Form/Input";
+import { InputLabel } from "./Form/Label";
+import { ErrorMessage } from "./Form/Error";
 import { sendEmail } from "../api/requests";
 import { useNavigate } from "react-router";
 
 const sendEmailFormSchema = z.object({
-  name: z.string().nonempty(),
+  name: z.string().nonempty("Informe seu nome"),
   phonenumber: z.string().optional(),
-  email: z.string().email().nonempty(),
-  message: z.string().optional(),
+  email: z.string().email().nonempty("Informe seu email"),
+  message: z.string().nonempty("Nos diga qual o seu problema"),
   attachment: z
     .instanceof(FileList)
     .refine(
@@ -67,6 +69,10 @@ export function TalktoUs() {
                 className="col-span-3"
                 placeholder="Ex: João Henrique Rabelo"
               />
+              <ErrorMessage
+                field="name"
+                className="col-start-2 col-span-2 justify-self-start"
+              />
             </InputRoot>
             {/* Email */}
             <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
@@ -76,6 +82,10 @@ export function TalktoUs() {
                 name="email"
                 className="col-span-3"
                 placeholder="Ex: example@mail.com"
+              />
+              <ErrorMessage
+                field="email"
+                className="col-start-2 col-span-2 justify-self-start"
               />
             </InputRoot>
             {/* Phone */}
@@ -96,6 +106,10 @@ export function TalktoUs() {
                 focus:outline-1 focus:outline-gray-800 block w-full p-1.5 col-span-3 row-span-3 h-24"
                 {...register("message")}
               ></textarea>
+              <ErrorMessage
+                field="message"
+                className="col-start-2 col-span-2 justify-self-start"
+              />
             </InputRoot>
             {/* File Upload */}
             <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">

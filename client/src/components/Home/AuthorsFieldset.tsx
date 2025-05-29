@@ -1,6 +1,8 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 
-import { InputField, InputLabel, InputRoot } from "../Input/input";
+import { InputField, InputRoot } from "../Form/Input";
+import { InputLabel } from "../Form/Label";
+import { ErrorMessage } from "../Form/Error";
 
 export function AuthorsFieldset() {
   const { control } = useFormContext();
@@ -36,6 +38,7 @@ export function AuthorsFieldset() {
               <InputLabel
                 value={`Nome do ${index + 1}º Autor:`}
                 htmlFor={authorName}
+                required
               />
               <InputField
                 type="text"
@@ -43,18 +46,27 @@ export function AuthorsFieldset() {
                 className="col-span-3"
                 placeholder="Ex: João Gabriel"
               />
+              <ErrorMessage
+                field={authorName}
+                className="col-start-2 col-span-2 justify-self-start"
+              />
             </InputRoot>
 
             <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
               <InputLabel
                 value={`Sobrenome do ${index + 1}º Autor:`}
                 htmlFor={authorSurname}
+                required
               />
               <InputField
                 type="text"
                 name={authorSurname}
                 className="col-span-3"
                 placeholder="Ex: Oliveira"
+              />
+              <ErrorMessage
+                field={authorSurname}
+                className="col-start-2 col-span-2 justify-self-start"
               />
             </InputRoot>
           </div>

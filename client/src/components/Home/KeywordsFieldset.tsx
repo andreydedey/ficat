@@ -1,25 +1,27 @@
 import { Link } from "react-router";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { InputField, InputLabel, InputRoot } from "../Input/input";
+import { InputField, InputRoot } from "../Form/Input";
+import { InputLabel } from "../Form/Label";
+import { ErrorMessage } from "../Form/Error";
+import React from "react";
 
 export function KeywordsFieldset() {
   const { control, register } = useFormContext();
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "palavras_chave"
-  })
+    name: "palavras_chave",
+  });
 
   const handleAddKeyword = () => {
-    append({value: ""})
-  }
+    append({ value: "" });
+  };
 
   const handleExcludeKeyword = () => {
     if (fields.length > 1) {
-      remove(fields.length - 1)
+      remove(fields.length - 1);
     }
-  }
-
+  };
 
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
@@ -36,21 +38,28 @@ export function KeywordsFieldset() {
         Consulte vocabulário controlado
       </Link>
 
-      <InputRoot className={`grid grid-cols-4 grid-rows-${fields} justify-items-end items-center gap-4`}>
+      <InputRoot
+        className={`grid grid-cols-4 grid-rows-${fields} justify-items-end items-center gap-4`}
+      >
         <InputLabel value="Assuntos (mín.: 1, máx.:5):" required />
-          {fields.map((field, index) => {
-            const fieldName = `palavras_chave.${index}.value`
+        {fields.map((field, index) => {
+          const fieldName = `palavras_chave.${index}.value`;
 
-            return (
+          return (
+            <React.Fragment key={field.id}>
               <InputField
-              key={field.id}
-              type="text"
-              name={fieldName}
-              className={`col-span-3 ${index > 0 ? "col-start-2" : ""}`}
-              placeholder={`Palavra-Chave ${index + 1}`}
-            />
-            )
-          })}
+                type="text"
+                name={fieldName}
+                className={`col-span-3 ${index > 0 ? "col-start-2" : ""}`}
+                placeholder={`Palavra-Chave ${index + 1}`}
+              />
+              <ErrorMessage
+                field={fieldName}
+                className="col-start-2 col-span-2 justify-self-start"
+              />
+            </React.Fragment>
+          );
+        })}
       </InputRoot>
 
       <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
@@ -65,7 +74,7 @@ export function KeywordsFieldset() {
           <option value="arial">Arial</option>
         </select>
       </InputRoot>
-      
+
       <div className="flex gap-3 justify-center items-center">
         {fields.length < 5 && (
           <button
@@ -88,7 +97,6 @@ export function KeywordsFieldset() {
           </button>
         )}
       </div>
-
     </fieldset>
   );
 }

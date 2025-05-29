@@ -1,5 +1,7 @@
 import { useFormContext } from "react-hook-form";
-import { InputField, InputLabel, InputRoot } from "../Input/input";
+import { InputField, InputRoot } from "../Form/Input";
+import { InputLabel } from "../Form/Label";
+import { ErrorMessage } from "../Form/Error";
 
 export function WorkDataFieldset() {
   const { register } = useFormContext();
@@ -21,6 +23,10 @@ export function WorkDataFieldset() {
           name="titulo_trabalho"
           className="col-span-3"
           placeholder="Ex: Redes sociais em bibliotecas universitárias"
+        />
+        <ErrorMessage
+          field="titulo_trabalho"
+          className="col-start-2 col-span-2 justify-self-start"
         />
       </InputRoot>
 
@@ -46,11 +52,13 @@ export function WorkDataFieldset() {
         />
         <InputField
           type="text"
-          id="nome_orientador"
           name="nome_orientador"
           className="col-span-3"
           placeholder="Ex: Paulo Victor Lobato"
-          required
+        />
+        <ErrorMessage
+          field="nome_orientador"
+          className="col-start-2 col-span-2 justify-self-start"
         />
       </InputRoot>
 
@@ -62,10 +70,13 @@ export function WorkDataFieldset() {
         />
         <InputField
           type="text"
-          id="sobrenome_orientador"
           name="sobrenome_orientador"
           className="col-span-3"
           placeholder="Ex: Sarmento"
+        />
+        <ErrorMessage
+          field="sobrenome_orientador"
+          className="col-start-2 col-span-2 justify-self-start"
         />
       </InputRoot>
 
@@ -94,7 +105,6 @@ export function WorkDataFieldset() {
           <InputField
             type="checkbox"
             value="Orientadora"
-            id="Orientadora"
             name="orientadora"
             className="w-4 h-4
               text-blue-600 bg-gray-300 border-gray-300 rounded-sm"
@@ -132,10 +142,13 @@ export function WorkDataFieldset() {
         />
         <InputField
           type="text"
-          id="numero_folhas"
           name="numero_folhas"
           className="col-span-3"
           placeholder="Ex: xxi, 70"
+        />
+        <ErrorMessage
+          field="numero_folhas"
+          className="col-start-2 col-span-2 justify-self-start"
         />
       </InputRoot>
 
@@ -219,6 +232,10 @@ export function WorkDataFieldset() {
           name="area_conhecimento"
           placeholder="Buscar um assunto no Botão Categorias de Assunto"
           className="col-span-3"
+        />
+        <ErrorMessage
+          field="area_conhecimento"
+          className="col-start-2 col-span-2 justify-self-start"
         />
       </InputRoot>
     </fieldset>
