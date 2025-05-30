@@ -3,12 +3,15 @@ from pydantic import BaseModel
 from typing import Optional, List
 from fpdf import FPDF
 
+
 class Autor(BaseModel):
     nome: str
     sobrenome: str
 
+
 class Palavra_Chave(BaseModel):
     value: str
+
 
 class CatalogCard(BaseModel):
     nomes_autor: List[Autor]
@@ -54,7 +57,10 @@ def generate_catalog_card(data: CatalogCard):
         15, 5, "T346t", ln=0
     )  # Prefixo fixo ( Como nao temos Banco ainda deixei esse prefixo)
     pdf.cell(
-        page_width - 15, 5, f"{data.nomes_autor[0].sobrenome.upper()}, {data.nomes_autor[0].nome}.", ln=1
+        page_width - 15,
+        5,
+        f"{data.nomes_autor[0].sobrenome.upper()}, {data.nomes_autor[0].nome}.",
+        ln=1,
     )
 
     pdf.cell(15, 5, "", ln=0)  # Espaço para recuo
@@ -108,9 +114,7 @@ def generate_catalog_card(data: CatalogCard):
     pdf.ln(2)
 
     # Palavras-chave
-    palavras_chave_formatadas = (
-        f"{indent_space}1. {'; '.join(palavra.value for palavra in data.palavras_chave)}. I. Título."
-    )
+    palavras_chave_formatadas = f"{indent_space}1. {'; '.join(palavra.value for palavra in data.palavras_chave)}. I. Título."
     pdf.cell(15, 5, "", ln=0)
     pdf.multi_cell(page_width - 15, 5, palavras_chave_formatadas, align="J")
 

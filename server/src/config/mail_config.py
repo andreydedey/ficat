@@ -2,7 +2,8 @@ import os
 from dotenv import load_dotenv
 from flask_mail import Mail
 
-load_dotenv() # Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()  # Carrega as variáveis de ambiente do arquivo .env
+
 
 def create_mail_config(app):
     app.config["MAIL_SERVER"] = "smtp.gmail.com"

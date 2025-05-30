@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from src.models.config.base import Base
 
+
 class Course(Base):
     __tablename__ = "courses"
 
@@ -11,5 +12,7 @@ class Course(Base):
     work_type = Column("type", String, nullable=False)
 
     def __repr__(self):
-        return (f"Course[id={self.id}, unityAcronym={self.unityAcronym}, name={self.name}, "
-                f"program={self.program}, work_type={self.work_type}]")
+        return (
+            f"Course[id={self.id}, unityAcronym={self.unityAcronym}, name={self.name}, "
+            f"program={self.program}, work_type={self.work_type}]"
+        )

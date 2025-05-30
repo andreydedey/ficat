@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from src.models.config.base import Base
 
+
 class academicUnities(Base):
     __tablename__ = "academicUnities"
 
@@ -9,4 +10,6 @@ class academicUnities(Base):
     acronym = Column(String, nullable=False)
 
     def __repr__(self):
-        print(f"Unidade Acadêmica [id = {self.id}, name={self.title}, acronym={self.acronym}]")
+        print(
+            f"Unidade Acadêmica [id = {self.id}, name={self.title}, acronym={self.acronym}]"
+        )

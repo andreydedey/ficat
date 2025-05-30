@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.sql import func
 from src.models.config.base import Base
 
+
 class CatalogCards(Base):
     __tablename__ = "catalogCards"
 
@@ -13,5 +14,7 @@ class CatalogCards(Base):
     datetime = Column(DateTime, default=func.now())
 
     def __repr__(self):
-        return (f"CatalogCards[id={self.id}, work_type={self.work_type}, acronym={self.acronym}, "
-                f"unityName={self.unityName}, courseName={self.courseName}, datetime={self.datetime}]")
+        return (
+            f"CatalogCards[id={self.id}, work_type={self.work_type}, acronym={self.acronym}, "
+            f"unityName={self.unityName}, courseName={self.courseName}, datetime={self.datetime}]"
+        )

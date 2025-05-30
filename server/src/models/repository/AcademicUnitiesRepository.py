@@ -3,6 +3,7 @@ from src.models.entities.AcademicUnities import academicUnities
 
 from sqlalchemy.exc import NoResultFound
 
+
 class AcademicUnitiesRepository:
     def get_all_academic_unities(self):
         with db_connection_handler as db:

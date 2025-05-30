@@ -21,10 +21,7 @@ mail = create_mail_config(app)
 
 # Registrar rotas
 app.add_url_rule(
-    "/generate_catalog_card", 
-    "catalog_card_route", 
-    catalog_card_route, 
-    methods=["POST"]
+    "/generate_catalog_card", "catalog_card_route", catalog_card_route, methods=["POST"]
 )
 
 app.add_url_rule(
