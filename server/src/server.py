@@ -6,6 +6,7 @@ from flask_cors import CORS
 
 from src.routes.catalog_card_route import catalog_card_route
 from src.routes.send_email_talkToUs_route import send_email_talkToUs_route
+from src.routes.db_routes import bd_routes_bp
 from src.config.mail_config import create_mail_config
 
 load_dotenv()
@@ -32,3 +33,5 @@ app.add_url_rule(
     send_email_talkToUs_route,
     methods=["POST"],
 )
+
+app.register_blueprint(bd_routes_bp)
