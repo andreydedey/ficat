@@ -3,6 +3,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from src.models.config.base import Base
+from src.models.config.seed import seed_from_sql_file
 
 # Load the environment variables
 load_dotenv()
@@ -37,3 +38,6 @@ class __DBConnectionHandler:
 
 
 db_connection_handler = __DBConnectionHandler()
+
+# Rodando a Seed
+seed_from_sql_file(filename="localhost.sql")
