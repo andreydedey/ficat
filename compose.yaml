@@ -11,11 +11,10 @@ services:
     command: python app.py
 
   db:
-    image: bitnami/mysql:8.0.36
+    image: bitnami/postgresql:latest
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpass
-      - MYSQL_USER=myuser
-      - MYSQL_PASSWORD=mypassword
-      - MYSQL_DATABASE=mydatabase
+      - POSTGRESQL_PASSWORD=mypassword
+      - POSTGRESQL_USERNAME=myuser
+      - POSTGRESQL_DATABASE=mydatabase
     ports:
-      - 5442:5442
+      - 5432:5432

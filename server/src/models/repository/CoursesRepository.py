@@ -5,11 +5,11 @@ from sqlalchemy.exc import NoResultFound
 
 
 class CoursesRepository:
-    def get_by_work_type_and_unity(self, typeOfWork: str, academicUnity: str):
+    def get_by_work_type_and_unity(self, work_type: str, academicUnity: str):
         with db_connection_handler as db:
             try:
                 courses = db.session.query(Course).filter(
-                    Course.typeOfWork == typeOfWork,
+                    Course.work_type == work_type,
                     Course.academicUnity == academicUnity,
                 ).all()
                 return courses
