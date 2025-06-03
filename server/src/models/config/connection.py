@@ -3,22 +3,21 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from src.models.config.base import Base
-from src.models.config.seed import seed_from_sql_file
 
 # Load the environment variables
 load_dotenv()
 
 # .env variables
-mysql_host = os.getenv("MYSQL_HOST")
-mysql_port = os.getenv("MYSQL_PORT")
-mysql_user = os.getenv("MYSQL_USER")
-mysql_password = os.getenv("MYSQL_PASSWORD")
-mysql_db = os.getenv("MYSQL_DB")
+pg_host = os.getenv("POSTGRES_HOST")
+pg_port = os.getenv("POSTGRES_PORT")
+pg_user = os.getenv("POSTGRES_USER")
+pg_password = os.getenv("POSTGRES_PASSWORD")
+pg_db = os.getenv("POSTGRES_DB")
 
 
 class __DBConnectionHandler:
     def __init__(self):
-        self.__connection_string = f"mysql+mysqlconnector://{mysql_user}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_db}"
+        self.__connection_string = f"postgresql+psycopg2://{pg_user}:{pg_password}@{pg_host}:{pg_port}/{pg_db}"
         self.__engine = None
         self.session = None
 
@@ -38,6 +37,3 @@ class __DBConnectionHandler:
 
 
 db_connection_handler = __DBConnectionHandler()
-
-# Rodando a Seed
-seed_from_sql_file(filename="localhost.sql")

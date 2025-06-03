@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String
 from src.models.config.base import Base
 
 
-class academicUnities(Base):
+class AcademicUnities(Base):
     __tablename__ = "academicUnities"
 
     id = Column(Integer, primary_key=True)
@@ -11,5 +11,12 @@ class academicUnities(Base):
 
     def __repr__(self):
         print(
-            f"Unidade Acadêmica [id = {self.id}, name={self.title}, acronym={self.acronym}]"
+            f"Unidade Acadêmica [id = {self.id}, title={self.title}, acronym={self.acronym}]"
         )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "acronym": self.acronym,
+        }

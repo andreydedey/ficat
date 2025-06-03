@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, jsonify, request
 
 from src.services.AcademicUnitiesService import AcademicUnitiesService
 from src.services.CoursesService import CoursesService
@@ -12,7 +12,7 @@ def get_academic_unities():
     academic_unities_service = AcademicUnitiesService()
     academic_unities = academic_unities_service.get_academic_unities()
     if academic_unities:
-        return {"academic_unities": academic_unities}, 200
+        return jsonify({"academic_unities": academic_unities}), 200
     else:
         return {"error": "No academic unities found"}, 404
 
@@ -30,7 +30,7 @@ def get_academic_unities_by_type_and_unity():
         type_of_work, academic_unity
     )
     if academic_unities:
-        return {"academic_unities": academic_unities}, 200
+        return jsonify({"academic_unities": academic_unities}), 200
     else:
         return {
             "error": "No academic unities found for the specified type of work and unity"

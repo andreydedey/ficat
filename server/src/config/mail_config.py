@@ -15,6 +15,4 @@ def create_mail_config(app):
     if not app.config["MAIL_PASSWORD"]:
         raise ValueError("A variável de ambiente MAIL_PASSWORD não está definida.")
 
-    print(app.config["MAIL_PASSWORD"])
-
     return Mail(app)
