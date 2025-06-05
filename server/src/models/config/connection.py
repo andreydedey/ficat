@@ -17,7 +17,9 @@ pg_db = os.getenv("POSTGRES_DB")
 
 class __DBConnectionHandler:
     def __init__(self):
-        self.__connection_string = f"postgresql+psycopg2://{pg_user}:{pg_password}@{pg_host}:{pg_port}/{pg_db}"
+        self.__connection_string = (
+            f"postgresql+psycopg2://{pg_user}:{pg_password}@{pg_host}:{pg_port}/{pg_db}"
+        )
         self.__engine = None
         self.session = None
 

@@ -28,3 +28,27 @@ export const sendEmail = async (data: sendEmailData) => {
     console.error("Erro ao enviar o Email: ", error)
   }
 }
+
+export const getCourses = async ({type_of_work, academic_unity}: {
+  type_of_work: string,
+  academic_unity: string,
+}) => {
+  try {
+    const response = await api.get("/db/get_courses", {
+      params: {type_of_work, academic_unity}
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter os cards do catálogo: ", error);
+  }
+}
+
+
+export const getAcademicUnities = async () => {
+  try {
+    const response = await api.get("/db/get_academic_unities");
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter as unidades acadêmicas: ", error);
+  }
+}

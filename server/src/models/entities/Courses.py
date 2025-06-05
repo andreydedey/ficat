@@ -16,7 +16,7 @@ class Course(Base):
             f"Course[id={self.id}, unityAcronym={self.unityAcronym}, name={self.name}, "
             f"program={self.program}, work_type={self.work_type}]"
         )
-    
+
     def to_dict(self):
         return {
             "id": self.id,

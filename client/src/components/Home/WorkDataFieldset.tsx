@@ -2,9 +2,16 @@ import { useFormContext } from "react-hook-form";
 import { InputField, InputRoot } from "../Form/Input";
 import { InputLabel } from "../Form/Label";
 import { ErrorMessage } from "../Form/Error";
+import { academicUnity } from "./Home";
 
-export function WorkDataFieldset() {
+interface WorkDataFieldsetProps {
+  academicUnities: academicUnity[];
+}
+
+export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
   const { register } = useFormContext();
+
+  console.log("Academic Unities: ", academicUnities);
 
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
@@ -176,7 +183,11 @@ export function WorkDataFieldset() {
             border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
             block p-1.5"
         >
-          <option value="ICEN">ICEN</option>
+          {academicUnities.map((unity) => {
+            return (
+              <option key={unity.id} value={unity.acronym}>{unity.name}</option>
+            )
+          })}
         </select>
       </InputRoot>
 

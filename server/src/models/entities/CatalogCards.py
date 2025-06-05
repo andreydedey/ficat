@@ -18,7 +18,7 @@ class CatalogCards(Base):
             f"CatalogCards[id={self.id}, work_type={self.work_type}, acronym={self.acronym}, "
             f"unityName={self.unityName}, courseName={self.courseName}, datetime={self.datetime}]"
         )
-    
+
     def to_dict(self):
         return {
             "id": self.id,

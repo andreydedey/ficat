@@ -12,15 +12,15 @@ def get_academic_unities():
     academic_unities_service = AcademicUnitiesService()
     academic_unities = academic_unities_service.get_academic_unities()
     if academic_unities:
-        academic_unities = [academic_unity.to_dict() for academic_unity in academic_unities]
-        return jsonify({"academic_unities": academic_unities}), 200
+        academic_unities = [
+            academic_unity.to_dict() for academic_unity in academic_unities
+        ]
+        return jsonify(academic_unities), 200
     else:
         return {"error": "No academic unities found"}, 404
 
 
-@bd_routes_bp.route(
-    "/get_courses", methods=["GET"]
-)
+@bd_routes_bp.route("/get_courses", methods=["GET"])
 def get_academic_unities_by_type_and_unity():
     courses_service = CoursesService()
 
@@ -31,8 +31,10 @@ def get_academic_unities_by_type_and_unity():
         type_of_work, academic_unity
     )
     if academic_unities:
-        academic_unities = [academic_unity.to_dict() for academic_unity in academic_unities]
-        return jsonify({"academic_unities": academic_unities}), 200
+        academic_unities = [
+            academic_unity.to_dict() for academic_unity in academic_unities
+        ]
+        return jsonify(academic_unities), 200
     else:
         return {
             "error": "No academic unities found for the specified type of work and unity"
