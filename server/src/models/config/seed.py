@@ -29,6 +29,27 @@ def seed_from_sql_file(filename: str):
 def seed_data():
     with db_connection_handler as db:
         try:
+            print("Iniciando limpeza dos dados existentes...")
+
+            # Limpar dados existentes (ordem importante devido às chaves estrangeiras)
+            # Primeiro deletar CatalogCards (dependente)
+            db.session.query(CatalogCards).delete()
+            print("CatalogCards deletados.")
+
+            # Depois deletar Courses (dependente)
+            db.session.query(Course).delete()
+            print("Courses deletados.")
+
+            # Por último deletar AcademicUnities (tabela pai)
+            db.session.query(AcademicUnities).delete()
+            print("AcademicUnities deletados.")
+
+            # Commit da limpeza
+            db.session.commit()
+            print("Limpeza concluída com sucesso.")
+
+            print("Iniciando inserção de novos dados...")
+
             # Academic Unities
             academic_unities = [
                 AcademicUnities(name="Instituto de Ciências Exatas", acronym="ICE"),
@@ -36,6 +57,7 @@ def seed_data():
                 AcademicUnities(name="Escola de Engenharia", acronym="EE"),
             ]
             db.session.add_all(academic_unities)
+            print("AcademicUnities adicionados.")
 
             # Courses
             courses = [
@@ -43,22 +65,23 @@ def seed_data():
                     unityAcronym="ICE",
                     name="Matemática",
                     program="Licenciatura",
-                    work_type="TCC",
+                    work_type="TC",
                 ),
                 Course(
                     unityAcronym="FALE",
                     name="Letras - Português",
                     program="Bacharelado",
-                    work_type="Monografia",
+                    work_type="Dissertação",
                 ),
                 Course(
                     unityAcronym="EE",
                     name="Engenharia Civil",
                     program="Bacharelado",
-                    work_type="Projeto Final",
+                    work_type="TC",
                 ),
             ]
             db.session.add_all(courses)
+            print("Courses adicionados.")
 
             # Catalog Cards
             catalog_cards = [
@@ -82,10 +105,15 @@ def seed_data():
                 ),
             ]
             db.session.add_all(catalog_cards)
+            print("CatalogCards adicionados.")
 
+            # Commit final
             db.session.commit()
-            print("Seed executado com sucesso.")
+            print(
+                "Seed executado com sucesso! Todos os dados foram limpos e recriados."
+            )
 
         except Exception as e:
             db.session.rollback()
             print(f"Erro ao executar seed: {e}")
+            raise e

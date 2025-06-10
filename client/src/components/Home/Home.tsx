@@ -1,14 +1,18 @@
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { useLocation } from "react-router";
+import { z } from "zod";
+import {
+  generateCatalogCard,
+  getAcademicUnities,
+  getCourses,
+} from "../../api/requests";
+import { createCatalogCardFormSchema } from "../../schemas/createCatalogCardFormSchema";
 import { AuthorsFieldset } from "./AuthorsFieldset";
 import { KeywordsFieldset } from "./KeywordsFieldset";
 import { WorkDataFieldset } from "./WorkDataFieldset";
-import { generateCatalogCard, getAcademicUnities, getCourses } from "../../api/requests";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
-import { createCatalogCardFormSchema } from "../../schemas/createCatalogCardFormSchema";
-import { useQuery } from "@tanstack/react-query";
 
 export type createCatalogCardData = z.infer<typeof createCatalogCardFormSchema>;
 
@@ -16,7 +20,15 @@ export type academicUnity = {
   id: number;
   acronym: string;
   name: string;
-}
+};
+
+export type coursesProgram = {
+  id: number;
+  name: string;
+  program: string;
+  unityAcronym: string;
+  work_type: string;
+};
 
 export function Home() {
   const location = useLocation();
@@ -33,12 +45,28 @@ export function Home() {
   const {
     handleSubmit,
     formState: { isSubmitting },
+    watch,
   } = methods;
 
-  const {data: academicUnities} = useQuery<academicUnity[]>({queryKey: ['academicUnities'], queryFn: getAcademicUnities}); 
+  const selectedAcademicUnity = watch("unidade_academica");
+  const selectedTypeOfWork = watch("tipo_trabalho");
+
+  const { data: academicUnities } = useQuery<academicUnity[]>({
+    queryKey: ["academicUnities"],
+    queryFn: getAcademicUnities,
+  });
+
+  const { data: coursesPrograms } = useQuery<coursesProgram[]>({
+    queryKey: ["coursesPrograms", selectedAcademicUnity, selectedTypeOfWork],
+    queryFn: () =>
+      getCourses({
+        academic_unity: selectedAcademicUnity,
+        type_of_work: selectedTypeOfWork,
+      }),
+    enabled: !!selectedAcademicUnity && !!selectedTypeOfWork,
+  });
 
   const onsubmit = (data: createCatalogCardData) => {
-    console.log(data);
     generateCatalogCard(data);
   };
 
@@ -62,7 +90,10 @@ export function Home() {
           className="flex flex-col gap-3 justify-start max-w-2xl"
         >
           <AuthorsFieldset />
-          <WorkDataFieldset academicUnities={academicUnities ?? []} />
+          <WorkDataFieldset
+            academicUnities={academicUnities ?? []}
+            coursesPrograms={coursesPrograms ?? []}
+          />
           <KeywordsFieldset />
           <button
             type="submit"

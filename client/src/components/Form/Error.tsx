@@ -36,8 +36,6 @@ export function ErrorMessage({
     return null;
   }
 
-  console.log("Passou por erro");
-
   return (
     <div className={twMerge(className, "text-sm text-red-600")} {...props}>
       {fieldError.message?.toString()}

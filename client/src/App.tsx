@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import backgroundImage from "./assets/image/ficat_background.jpg";
 import logoHeader from "./assets/image/header.png";
 import { About } from "./components/About";

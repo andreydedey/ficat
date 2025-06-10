@@ -1,17 +1,19 @@
 import { useFormContext } from "react-hook-form";
+import { ErrorMessage } from "../Form/Error";
 import { InputField, InputRoot } from "../Form/Input";
 import { InputLabel } from "../Form/Label";
-import { ErrorMessage } from "../Form/Error";
-import { academicUnity } from "./Home";
+import { academicUnity, coursesProgram } from "./Home";
 
 interface WorkDataFieldsetProps {
   academicUnities: academicUnity[];
+  coursesPrograms: coursesProgram[];
 }
 
-export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
+export function WorkDataFieldset({
+  academicUnities,
+  coursesPrograms,
+}: WorkDataFieldsetProps) {
   const { register } = useFormContext();
-
-  console.log("Academic Unities: ", academicUnities);
 
   return (
     <fieldset className="flex flex-col gap-4 border-[1px] border-red-700 rounded-lg p-4">
@@ -185,8 +187,10 @@ export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
         >
           {academicUnities.map((unity) => {
             return (
-              <option key={unity.id} value={unity.acronym}>{unity.name}</option>
-            )
+              <option key={unity.id} value={unity.acronym}>
+                {unity.name}
+              </option>
+            );
           })}
         </select>
       </InputRoot>
@@ -198,7 +202,7 @@ export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
             type="radio"
             id="tese"
             name="tipo_trabalho"
-            value={"tese"}
+            value={"TESE"}
             className="w-4 h-4 border-gray-300 focus:ring-2
             focus:ring-blue-300"
           />
@@ -206,7 +210,7 @@ export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
 
           <InputField
             name="tipo_trabalho"
-            value={"dissertacao"}
+            value={"Dissertação"}
             type="radio"
             id="dissertacao"
             className="w-4 h-4 border-gray-300 focus:ring-2
@@ -216,7 +220,7 @@ export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
 
           <InputField
             name="tipo_trabalho"
-            value={"monografia"}
+            value={"TC"}
             type="radio"
             id="tese"
             className="w-4 h-4 border-gray-300 focus:ring-2
@@ -226,7 +230,7 @@ export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
 
           <InputField
             name="tipo_trabalho"
-            value={"trabalho_conclusao"}
+            value={"TC"}
             type="radio"
             id="tese"
             className="w-4 h-4 border-gray-300 focus:ring-2
@@ -234,6 +238,25 @@ export function WorkDataFieldset({academicUnities}: WorkDataFieldsetProps) {
           />
           <InputLabel value="(TC) Graduação" />
         </div>
+      </InputRoot>
+
+      <InputRoot className="grid grid-cols-4 justify-items-end items-center gap-4">
+        <InputLabel value="Curso:" htmlFor="curso" />
+        <select
+          id="curso"
+          {...register("curso")}
+          className="col-span-2 w-full bg-gray-50 border-2 
+            border-gray-500 text-gray-900 text-sm rounded-lg focus:border-gray-800 focus:outline-1 outline-gray-300
+            block p-1.5"
+        >
+          {coursesPrograms.map((coursesProgram) => {
+            return (
+              <option key={coursesProgram.id} value={coursesProgram.name}>
+                {coursesProgram.name} - {coursesProgram.program}
+              </option>
+            );
+          })}
+        </select>
       </InputRoot>
 
       <InputRoot className="grid grid-cols-4 justity-items-end items-center gap-4">

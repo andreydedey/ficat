@@ -1,11 +1,11 @@
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, FormProvider } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { z } from "zod";
+import { sendEmail } from "../api/requests";
+import { ErrorMessage } from "./Form/Error";
 import { InputField, InputRoot } from "./Form/Input";
 import { InputLabel } from "./Form/Label";
-import { ErrorMessage } from "./Form/Error";
-import { sendEmail } from "../api/requests";
-import { useNavigate } from "react-router";
 
 const sendEmailFormSchema = z.object({
   name: z.string().nonempty("Informe seu nome"),
@@ -34,7 +34,6 @@ export function TalktoUs() {
   const { register, handleSubmit } = methods;
 
   const submitEmail = (data: sendEmailData) => {
-    console.log(data);
     sendEmail(data);
     navigate("/", { state: { successMessage: "Email enviado com sucesso!" } });
   };

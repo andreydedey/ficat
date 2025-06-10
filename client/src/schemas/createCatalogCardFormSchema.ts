@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 export const createCatalogCardFormSchema = z.object({
   nomes_autor: z

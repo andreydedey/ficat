@@ -12,10 +12,11 @@ class CoursesRepository:
                     db.session.query(Course)
                     .filter(
                         Course.work_type == work_type,
-                        Course.academicUnity == academicUnity,
+                        Course.unityAcronym == academicUnity,
                     )
                     .all()
                 )
+                print(work_type, academicUnity)
                 return courses
             except NoResultFound:
                 return None
